@@ -180,22 +180,25 @@ function Particles() {
 /* ───────────────────────── LEGACY ───────────────────────── */
 function Legacy() {
   return (
-    <section id="legacy" className="relative grain overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
+    <section id="legacy" className="relative grain overflow-hidden bg-[var(--ivory)] py-20 lg:py-28">
       <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-24 lg:px-12">
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5 flex flex-col">
           <Reveal>
-            <div className="eyebrow mb-8 flex items-center gap-4 text-[var(--gold)]">
+            <div className="eyebrow mb-12 flex items-center gap-4 text-[var(--gold)]">
               <span className="h-px w-10 bg-[var(--gold)]" />
               The Dukes Legacy
             </div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1] text-[var(--royal-deep)]">
-            <RevealLines text="Four decades" />
-            <br />
-            <span className="italic text-[var(--gold)]"><RevealLines text="of trust." /></span>
-          </h2>
+
+          <div className="flex-1 relative min-h-[500px] overflow-hidden group">
+            <img
+              src={villaImg}
+              alt="Dukes Legacy Villa"
+              className="h-full w-full object-cover shadow-2xl transition-transform duration-[2000ms] group-hover:scale-105"
+            />
+          </div>
         </div>
-        <div className="lg:col-span-6 lg:col-start-7 lg:pt-20">
+        <div className="lg:col-span-6 lg:col-start-7 my-auto">
           <Reveal delay={0.2}>
             <p className="text-lg font-light leading-[1.8] text-[var(--charcoal)]/80">
               Since 1988, the Dukes Group has built a reputation on enduring craftsmanship and disciplined growth. From a heritage in fast-moving consumer goods across more than 120 countries, the group brings a global perspective to a deeply local craft — building places people are proud to call their own.
@@ -267,18 +270,13 @@ function Scale() {
       }} />
       <FloatingGradient />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20 max-w-2xl">
+        <div className="mb-12 max-w-2xl">
           <Reveal>
-            <div className="eyebrow mb-8 flex items-center gap-4 text-[var(--gold)]">
+            <div className="eyebrow flex items-center gap-4 text-[var(--gold)]">
               <span className="h-px w-10 bg-[var(--gold)]" />
               Scale & Impact
             </div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-white">
-            <RevealLines text="A measurable" />
-            <br />
-            <span className="italic text-[var(--gold)]"><RevealLines text="legacy of growth." /></span>
-          </h2>
         </div>
         <div className="grid grid-cols-1 gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
           {stats.map((s, i) => (
@@ -332,7 +330,7 @@ function Philosophy() {
     { t: "Human-centered design", d: "Architecture that serves the rituals of daily life — light, air, dignity, calm." },
   ];
   return (
-    <section id="philosophy" className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
+    <section id="philosophy" className="relative overflow-hidden bg-[var(--ivory)] py-20 lg:py-28">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-24 max-w-2xl">
           <Reveal>
@@ -341,9 +339,9 @@ function Philosophy() {
               Our Philosophy
             </div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
+          {/* <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="A quieter" /> <span className="italic text-[var(--gold)]"><RevealLines text="kind of luxury." /></span>
-          </h2>
+          </h2> */}
         </div>
         <div className="space-y-px bg-[var(--charcoal)]/10">
           {points.map((p, i) => (
@@ -388,9 +386,9 @@ function Values() {
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Values</div>
           </Reveal>
-          <h2 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.9] tracking-[0.05em] text-white">
+          {/* <h2 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.9] tracking-[0.05em] text-white">
             <RevealLines text="V I S I O N" />
-          </h2>
+          </h2> */}
         </div>
         <div className="grid grid-cols-1 gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((c, i) => (
@@ -422,50 +420,86 @@ function Values() {
 /* ───────────────────────── JOURNEY ───────────────────────── */
 function Journey() {
   const milestones = [
-    { y: "1988", t: "Founded", d: "The Dukes Group is established." },
-    { y: "1996", t: "International", d: "Footprint extends across continents." },
-    { y: "2008", t: "Manufacturing", d: "17 facilities operational worldwide." },
-    { y: "2014", t: "Realty", d: "Real estate division launched." },
-    { y: "2019", t: "Plotted", d: "Master-planned communities introduced." },
-    { y: "2024", t: "Today", d: "Pan-format luxury developer." },
+    { y: "1988", t: "Group Founded", d: "The Dukes Group is established with a vision to build enduring enterprises." },
+    { y: "1996", t: "Global Expansion", d: "Operations expand across 40+ countries worldwide." },
+    { y: "2008", t: "Manufacturing Scale", d: "17 state-of-the-art facilities operational globally." },
+    { y: "2014", t: "Realty Division", d: "Real estate arm launched with decades of discipline." },
+    { y: "2019", t: "Plotted Communities", d: "Master-planned developments across micro-markets." },
+    { y: "2024", t: "Pan-Format Developer", d: "Fully integrated luxury developer across all verticals." },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
+    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20 max-w-2xl">
+        {/* Header */}
+        <div className="mb-20">
           <Reveal>
-            <div className="eyebrow mb-8 text-[var(--gold)]">— Journey</div>
+            <div className="eyebrow mb-6 flex items-center gap-4 text-[var(--gold)]">
+              <span className="h-px w-10 bg-[var(--gold)]" />
+              Our Journey
+            </div>
           </Reveal>
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
-            <RevealLines text="The road" /> <span className="italic text-[var(--gold)]"><RevealLines text="behind us." /></span>
+            <RevealLines text="Four decades of" /> <span className="italic text-[var(--gold)]"><RevealLines text="deliberate growth." /></span>
           </h2>
         </div>
-      </div>
-      <div className="relative overflow-x-auto">
-        <div className="mx-auto flex max-w-[1400px] gap-12 px-6 pb-8 lg:px-12">
-          {milestones.map((m, i) => (
+
+        {/* Vertical timeline */}
+        <div className="relative">
+          {/* Center vertical line */}
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-[var(--charcoal)]/10 lg:left-1/2 lg:-translate-x-px">
             <motion.div
-              key={m.y}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: i * 0.1, duration: 1 }}
-              className="relative min-w-[260px] flex-shrink-0"
-            >
-              <div className="mb-6 flex items-center gap-4">
-                <div className="h-2 w-2 rounded-full bg-[var(--gold)] shadow-[0_0_20px_var(--gold)]" />
-                <div className="h-px flex-1 bg-[var(--charcoal)]/15" />
-              </div>
-              <div className="font-display text-4xl text-[var(--royal-deep)]">{m.y}</div>
-              <div className="mt-2 eyebrow text-[var(--gold)]">{m.t}</div>
-              <p className="mt-3 text-sm font-light text-[var(--charcoal)]/70">{m.d}</p>
-            </motion.div>
-          ))}
+              className="absolute inset-x-0 top-0 bg-gradient-to-b from-[var(--gold)] via-[var(--gold)] to-[var(--gold)]/20"
+              initial={{ height: '0%' }}
+              whileInView={{ height: '100%' }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+            />
+          </div>
+
+          <div className="space-y-16 lg:space-y-20">
+            {milestones.map((m, i) => {
+              const isLeft = i % 2 === 0;
+              return (
+                <motion.div
+                  key={m.y}
+                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative grid grid-cols-1 lg:grid-cols-2 lg:gap-16"
+                >
+                  {/* Dot */}
+                  <div className="absolute left-6 top-4 z-10 -translate-x-1/2 lg:left-1/2">
+                    <div className="h-3 w-3 rounded-full border-2 border-[var(--gold)] bg-[#F9F6F1] transition-all duration-500 hover:bg-[var(--gold)] hover:shadow-[0_0_16px_var(--gold)]" />
+                  </div>
+
+                  {/* Card — left or right */}
+                  <div className={`pl-12 lg:pl-0 ${isLeft ? 'lg:pr-16 lg:text-right' : 'lg:col-start-2 lg:pl-16'}`}>
+                    <div className="group cursor-default">
+                      {/* Year */}
+                      <div className={`mb-2 font-display text-5xl lg:text-6xl text-[var(--royal-deep)]/15 transition-colors duration-500 group-hover:text-[var(--gold)]/30 ${isLeft ? 'lg:text-right' : ''}`}>
+                        {m.y}
+                      </div>
+                      <div className={`flex items-center gap-3 ${isLeft ? 'lg:justify-end' : ''}`}>
+                        <span className="font-display text-3xl lg:text-4xl text-[var(--royal-deep)]">{m.y}</span>
+                      </div>
+                      <div className={`mt-2 flex items-center gap-3 ${isLeft ? 'lg:justify-end' : ''}`}>
+                        <span className="h-px w-8 bg-[var(--gold)]/50 transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--gold)]" />
+                        <span className="eyebrow text-[var(--gold)]">{m.t}</span>
+                      </div>
+                      <p className="mt-4 max-w-sm text-sm font-light leading-[1.8] text-[var(--charcoal)]/60">{m.d}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ───────────────────────── FMCG TO REALTY ───────────────────────── */
 function FmcgToRealty() {
@@ -526,60 +560,90 @@ function FmcgToRealty() {
 function DesignDisciplineDelight() {
   const panels = [
     {
+      num: "01",
       label: "Design",
       title: "Drawn with intention.",
       copy: "Every floor plan begins as a question about how a life is actually lived. Architecture follows.",
       bg: blueprintImg,
-      tone: "blueprint",
     },
     {
+      num: "02",
       label: "Discipline",
       title: "Delivered with rigor.",
       copy: "Forty years of operational excellence applied to schedules, budgets, and standards that do not slip.",
       bg: commercialImg,
-      tone: "grid",
     },
     {
+      num: "03",
       label: "Delight",
       title: "Lived with joy.",
       copy: "Light, materials, and proportion that age into something more beautiful than the day they were delivered.",
       bg: delightImg,
-      tone: "interior",
     },
   ];
   return (
-    <section className="relative bg-[var(--royal-deep)]">
-      {panels.map((p, i) => (
-        <Panel key={p.label} {...p} index={i} />
-      ))}
-    </section>
-  );
-}
-
-function Panel({ label, title, copy, bg, index }: { label: string; title: string; copy: string; bg: string; tone: string; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 0.6, 1], [0, 1, 1, 0]);
-  return (
-    <div ref={ref} className="relative h-[100svh] w-full overflow-hidden">
-      <motion.div style={{ y }} className="absolute inset-0">
-        <img src={bg} alt="" className="h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-[var(--royal-deep)]/65" />
-      </motion.div>
-      <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-6 lg:px-12">
-        <div className="max-w-3xl">
-          <div className="eyebrow mb-8 flex items-center gap-4 text-[var(--gold)]">
-            <span className="h-px w-12 bg-[var(--gold)]" />
-            0{index + 1} / {label}
-          </div>
-          <h2 className="font-display text-[clamp(3rem,8vw,8rem)] leading-[0.95] text-white">
-            <RevealLines text={title} />
+    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+        {/* Header */}
+        <div className="mb-20">
+          <Reveal>
+            <div className="eyebrow mb-6 flex items-center gap-4 text-[var(--gold)]">
+              <span className="h-px w-10 bg-[var(--gold)]" />
+              Our Pillars
+            </div>
+          </Reveal>
+          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
+            <RevealLines text="Design. Discipline." /> <span className="italic text-[var(--gold)]"><RevealLines text="Delight." /></span>
           </h2>
-          <p className="mt-10 max-w-lg text-base font-light leading-[1.9] text-white/75">{copy}</p>
         </div>
-      </motion.div>
-    </div>
+
+        {/* Vertical alternating rows */}
+        <div className="space-y-24">
+          {panels.map((p, i) => {
+            const isEven = i % 2 === 0;
+            return (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className={`grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20 ${!isEven ? 'lg:[&>*:first-child]:order-2' : ''}`}
+              >
+                {/* Image */}
+                <div className="group relative overflow-hidden">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={p.bg}
+                      alt={p.label}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                    />
+                  </div>
+                  {/* Number watermark */}
+                  <div className="absolute right-6 top-6 font-display text-7xl font-bold text-white/20 leading-none select-none">
+                    {p.num}
+                  </div>
+                </div>
+
+                {/* Text */}
+                <div className={isEven ? 'lg:pl-8' : 'lg:pr-8'}>
+                  <div className="eyebrow mb-4 flex items-center gap-4 text-[var(--gold)]">
+                    <span className="h-px w-8 bg-[var(--gold)]" />
+                    {p.num} / {p.label}
+                  </div>
+                  <h3 className="font-display text-[clamp(2rem,4vw,4rem)] leading-[1.05] text-[var(--royal-deep)]">
+                    {p.title}
+                  </h3>
+                  <div className="mt-6 h-px w-12 bg-[var(--gold)]" />
+                  <p className="mt-8 text-base font-light leading-[1.85] text-[var(--charcoal)]/70">{p.copy}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -670,9 +734,8 @@ function Portfolio() {
               <button
                 key={t}
                 onClick={() => setActive(t)}
-                className={`relative px-5 py-3 text-[11px] uppercase tracking-[0.22em] transition-colors ${
-                  active === t ? "text-[var(--royal-deep)]" : "text-[var(--charcoal)]/50 hover:text-[var(--royal-deep)]"
-                }`}
+                className={`relative px-5 py-3 text-[11px] uppercase tracking-[0.22em] transition-colors ${active === t ? "text-[var(--royal-deep)]" : "text-[var(--charcoal)]/50 hover:text-[var(--royal-deep)]"
+                  }`}
               >
                 {t}
                 {active === t && (
