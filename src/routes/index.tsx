@@ -1014,7 +1014,7 @@ function FieldArea({ label }: { label: string }) {
 /* ───────────────────────── FOOTER ───────────────────────── */
 function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[var(--charcoal)] py-16 text-white">
+    <footer className="relative overflow-hidden bg-[var(--royal-deep)] py-16 text-white">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
