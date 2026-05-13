@@ -13,6 +13,9 @@ import plottedImg from "@/assets/project-plotted.jpg";
 import blueprintImg from "@/assets/design-blueprint.jpg";
 import delightImg from "@/assets/delight-interior.jpg";
 import futureImg from "@/assets/future-city.jpg";
+import legacyHeritageImg from "@/assets/legacy-heritage.jpg";
+import philosophyCourtImg from "@/assets/philosophy-court.jpg";
+import contactAerialImg from "@/assets/contact-aerial.jpg";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
