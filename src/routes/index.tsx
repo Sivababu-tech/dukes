@@ -470,16 +470,29 @@ function Journey() {
   ];
   return (
     <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20 max-w-2xl">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-20 lg:px-12">
+        <div className="lg:col-span-5">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Journey</div>
           </Reveal>
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="The road" /> <span className="italic text-[var(--gold)]"><RevealLines text="behind us." /></span>
           </h2>
+          <Reveal delay={0.2}>
+            <p className="mt-8 max-w-md text-base font-light leading-[1.85] text-[var(--charcoal)]/70">
+              Four decades of measured steps — each one a foundation for the next. Scroll through the chapters that shaped Dukes.
+            </p>
+          </Reveal>
+        </div>
+        <div className="lg:col-span-6 lg:col-start-7">
+          <div className="relative overflow-hidden">
+            <img src={blueprintImg} alt="" className="h-[280px] w-full object-cover opacity-90" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--ivory)] via-transparent to-[var(--ivory)]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--ivory)] to-transparent" />
+          </div>
         </div>
       </div>
+      <div className="mt-16" />
       <div className="relative overflow-x-auto">
         <div className="mx-auto flex max-w-[1400px] gap-12 px-6 pb-8 lg:px-12">
           {milestones.map((m, i) => (
