@@ -355,8 +355,8 @@ function Philosophy() {
   ];
   return (
     <section id="philosophy" className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-24 max-w-2xl">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-20 lg:px-12">
+        <div className="lg:col-span-5">
           <Reveal>
             <div className="eyebrow mb-8 flex items-center gap-4 text-[var(--gold)]">
               <span className="h-px w-10 bg-[var(--gold)]" />
@@ -366,27 +366,44 @@ function Philosophy() {
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="A quieter" /> <span className="italic text-[var(--gold)]"><RevealLines text="kind of luxury." /></span>
           </h2>
+          <Reveal delay={0.25}>
+            <div className="relative mt-12 overflow-hidden">
+              <motion.img
+                src={philosophyCourtImg}
+                alt="Courtyard"
+                className="h-[440px] w-full object-cover"
+                initial={{ scale: 1.12 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-[var(--gold)]/30" />
+            </div>
+          </Reveal>
         </div>
-        <div className="space-y-px bg-[var(--charcoal)]/10">
-          {points.map((p, i) => (
-            <motion.div
-              key={p.t}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1.1, delay: i * 0.1 }}
-              className="group grid grid-cols-12 gap-8 bg-[var(--ivory)] py-12 transition-all duration-700"
-            >
-              <div className="col-span-2 md:col-span-1">
-                <div className="font-display text-2xl text-[var(--gold)]">0{i + 1}</div>
-              </div>
-              <div className="col-span-10 md:col-span-5">
-                <h3 className="font-display text-3xl text-[var(--royal-deep)] md:text-4xl">{p.t}</h3>
-                <div className="mt-4 h-px w-12 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
-              </div>
-              <p className="col-span-12 max-w-md text-base font-light leading-[1.8] text-[var(--charcoal)]/70 md:col-span-6">{p.d}</p>
-            </motion.div>
-          ))}
+        <div className="lg:col-span-7">
+          <div className="space-y-px bg-[var(--charcoal)]/10">
+            {points.map((p, i) => (
+              <motion.div
+                key={p.t}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 1.1, delay: i * 0.1 }}
+                className="group grid grid-cols-12 gap-6 bg-[var(--ivory)] py-10 transition-all duration-700"
+              >
+                <div className="col-span-2">
+                  <div className="font-display text-2xl text-[var(--gold)]">0{i + 1}</div>
+                </div>
+                <div className="col-span-10">
+                  <h3 className="font-display text-2xl text-[var(--royal-deep)] md:text-3xl">{p.t}</h3>
+                  <div className="mt-3 h-px w-12 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                  <p className="mt-5 max-w-md text-base font-light leading-[1.8] text-[var(--charcoal)]/70">{p.d}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
