@@ -197,6 +197,25 @@ function Legacy() {
             <br />
             <span className="italic text-[var(--gold)]"><RevealLines text="of trust." /></span>
           </h2>
+          <Reveal delay={0.3}>
+            <div className="relative mt-12 overflow-hidden">
+              <motion.img
+                src={legacyHeritageImg}
+                alt="Architectural heritage"
+                className="h-[520px] w-full object-cover grayscale"
+                initial={{ scale: 1.15 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <div className="eyebrow text-white/90">Est. 1988</div>
+                <div className="eyebrow text-[var(--gold)]">Mumbai · India</div>
+              </div>
+            </div>
+          </Reveal>
         </div>
         <div className="lg:col-span-6 lg:col-start-7 lg:pt-20">
           <Reveal delay={0.2}>
