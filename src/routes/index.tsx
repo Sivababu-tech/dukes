@@ -955,6 +955,22 @@ function Contact() {
               </motion.div>
             ))}
           </div>
+          <Reveal delay={0.4}>
+            <div className="relative mt-16 overflow-hidden">
+              <motion.img
+                src={contactAerialImg}
+                alt="Aerial community"
+                className="h-[280px] w-full object-cover"
+                initial={{ scale: 1.12 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--royal-deep) 30%, transparent), color-mix(in oklab, var(--royal-deep) 80%, transparent))" }} />
+              <div className="absolute bottom-5 left-6 eyebrow text-[var(--gold)]">Mumbai · Headquarters</div>
+            </div>
+          </Reveal>
         </div>
 
         <div className="lg:col-span-5 lg:col-start-8">
