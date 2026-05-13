@@ -13,6 +13,9 @@ import plottedImg from "@/assets/project-plotted.jpg";
 import blueprintImg from "@/assets/design-blueprint.jpg";
 import delightImg from "@/assets/delight-interior.jpg";
 import futureImg from "@/assets/future-city.jpg";
+import legacyHeritageImg from "@/assets/legacy-heritage.jpg";
+import philosophyCourtImg from "@/assets/philosophy-court.jpg";
+import contactAerialImg from "@/assets/contact-aerial.jpg";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -194,6 +197,25 @@ function Legacy() {
             <br />
             <span className="italic text-[var(--gold)]"><RevealLines text="of trust." /></span>
           </h2>
+          <Reveal delay={0.3}>
+            <div className="relative mt-12 overflow-hidden">
+              <motion.img
+                src={legacyHeritageImg}
+                alt="Architectural heritage"
+                className="h-[520px] w-full object-cover grayscale"
+                initial={{ scale: 1.15 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <div className="eyebrow text-white/90">Est. 1988</div>
+                <div className="eyebrow text-[var(--gold)]">Mumbai · India</div>
+              </div>
+            </div>
+          </Reveal>
         </div>
         <div className="lg:col-span-6 lg:col-start-7 lg:pt-20">
           <Reveal delay={0.2}>
@@ -333,8 +355,8 @@ function Philosophy() {
   ];
   return (
     <section id="philosophy" className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-24 max-w-2xl">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-20 lg:px-12">
+        <div className="lg:col-span-5">
           <Reveal>
             <div className="eyebrow mb-8 flex items-center gap-4 text-[var(--gold)]">
               <span className="h-px w-10 bg-[var(--gold)]" />
@@ -344,27 +366,44 @@ function Philosophy() {
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="A quieter" /> <span className="italic text-[var(--gold)]"><RevealLines text="kind of luxury." /></span>
           </h2>
+          <Reveal delay={0.25}>
+            <div className="relative mt-12 overflow-hidden">
+              <motion.img
+                src={philosophyCourtImg}
+                alt="Courtyard"
+                className="h-[440px] w-full object-cover"
+                initial={{ scale: 1.12 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-[var(--gold)]/30" />
+            </div>
+          </Reveal>
         </div>
-        <div className="space-y-px bg-[var(--charcoal)]/10">
-          {points.map((p, i) => (
-            <motion.div
-              key={p.t}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1.1, delay: i * 0.1 }}
-              className="group grid grid-cols-12 gap-8 bg-[var(--ivory)] py-12 transition-all duration-700"
-            >
-              <div className="col-span-2 md:col-span-1">
-                <div className="font-display text-2xl text-[var(--gold)]">0{i + 1}</div>
-              </div>
-              <div className="col-span-10 md:col-span-5">
-                <h3 className="font-display text-3xl text-[var(--royal-deep)] md:text-4xl">{p.t}</h3>
-                <div className="mt-4 h-px w-12 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
-              </div>
-              <p className="col-span-12 max-w-md text-base font-light leading-[1.8] text-[var(--charcoal)]/70 md:col-span-6">{p.d}</p>
-            </motion.div>
-          ))}
+        <div className="lg:col-span-7">
+          <div className="space-y-px bg-[var(--charcoal)]/10">
+            {points.map((p, i) => (
+              <motion.div
+                key={p.t}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 1.1, delay: i * 0.1 }}
+                className="group grid grid-cols-12 gap-6 bg-[var(--ivory)] py-10 transition-all duration-700"
+              >
+                <div className="col-span-2">
+                  <div className="font-display text-2xl text-[var(--gold)]">0{i + 1}</div>
+                </div>
+                <div className="col-span-10">
+                  <h3 className="font-display text-2xl text-[var(--royal-deep)] md:text-3xl">{p.t}</h3>
+                  <div className="mt-3 h-px w-12 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                  <p className="mt-5 max-w-md text-base font-light leading-[1.8] text-[var(--charcoal)]/70">{p.d}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -431,16 +470,29 @@ function Journey() {
   ];
   return (
     <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20 max-w-2xl">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-20 lg:px-12">
+        <div className="lg:col-span-5">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Journey</div>
           </Reveal>
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="The road" /> <span className="italic text-[var(--gold)]"><RevealLines text="behind us." /></span>
           </h2>
+          <Reveal delay={0.2}>
+            <p className="mt-8 max-w-md text-base font-light leading-[1.85] text-[var(--charcoal)]/70">
+              Four decades of measured steps — each one a foundation for the next. Scroll through the chapters that shaped Dukes.
+            </p>
+          </Reveal>
+        </div>
+        <div className="lg:col-span-6 lg:col-start-7">
+          <div className="relative overflow-hidden">
+            <img src={blueprintImg} alt="" className="h-[280px] w-full object-cover opacity-90" loading="lazy" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--ivory)] via-transparent to-[var(--ivory)]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--ivory)] to-transparent" />
+          </div>
         </div>
       </div>
+      <div className="mt-16" />
       <div className="relative overflow-x-auto">
         <div className="mx-auto flex max-w-[1400px] gap-12 px-6 pb-8 lg:px-12">
           {milestones.map((m, i) => (
@@ -592,7 +644,7 @@ function Difference() {
     { t: "Architectural restraint", d: "Buildings designed to age well and remain quietly relevant." },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--charcoal)] py-32 text-white lg:py-44">
+    <section className="relative overflow-hidden bg-[var(--royal-deep)] py-32 text-white lg:py-44">
       <FloatingGradient />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 text-center">
@@ -764,30 +816,38 @@ function Subsidiaries() {
   ];
   return (
     <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20 max-w-2xl">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-20 lg:px-12">
+        <div className="lg:col-span-5">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Subsidiary Brands</div>
           </Reveal>
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="One group," /> <span className="italic text-[var(--gold)]"><RevealLines text="many disciplines." /></span>
           </h2>
+          <Reveal delay={0.25}>
+            <p className="mt-8 max-w-md text-base font-light leading-[1.85] text-[var(--charcoal)]/70">
+              A constellation of complementary ventures — each operating to the same standard of discipline and design.
+            </p>
+          </Reveal>
         </div>
-        <div className="grid grid-cols-1 gap-px bg-[var(--charcoal)]/10 sm:grid-cols-2 lg:grid-cols-4">
-          {brands.map((b, i) => (
-            <motion.div
-              key={b.n}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.9 }}
-              className="group bg-[var(--ivory)] p-10 transition-all duration-700 hover:bg-white"
-            >
-              <div className="font-display text-2xl text-[var(--royal-deep)]">{b.n}</div>
-              <div className="mt-3 text-xs uppercase tracking-[0.2em] text-[var(--charcoal)]/50">{b.t}</div>
-              <div className="mt-8 h-px w-8 bg-[var(--gold)] transition-all duration-700 group-hover:w-20" />
-            </motion.div>
-          ))}
+        <div className="lg:col-span-7">
+          <div className="grid grid-cols-1 gap-px bg-[var(--charcoal)]/10 sm:grid-cols-2">
+            {brands.map((b, i) => (
+              <motion.div
+                key={b.n}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.9 }}
+                className="group relative overflow-hidden bg-[var(--ivory)] p-10 transition-all duration-700 hover:bg-white"
+              >
+                <div className="font-display text-2xl text-[var(--royal-deep)]">{b.n}</div>
+                <div className="mt-3 text-xs uppercase tracking-[0.2em] text-[var(--charcoal)]/50">{b.t}</div>
+                <div className="mt-8 h-px w-8 bg-[var(--gold)] transition-all duration-700 group-hover:w-20" />
+                <div className="font-display absolute right-6 top-6 text-5xl text-[var(--gold)]/15">0{i + 1}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -916,6 +976,22 @@ function Contact() {
               </motion.div>
             ))}
           </div>
+          <Reveal delay={0.4}>
+            <div className="relative mt-16 overflow-hidden">
+              <motion.img
+                src={contactAerialImg}
+                alt="Aerial community"
+                className="h-[280px] w-full object-cover"
+                initial={{ scale: 1.12 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                loading="lazy"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, color-mix(in oklab, var(--royal-deep) 30%, transparent), color-mix(in oklab, var(--royal-deep) 80%, transparent))" }} />
+              <div className="absolute bottom-5 left-6 eyebrow text-[var(--gold)]">Mumbai · Headquarters</div>
+            </div>
+          </Reveal>
         </div>
 
         <div className="lg:col-span-5 lg:col-start-8">
@@ -975,7 +1051,7 @@ function FieldArea({ label }: { label: string }) {
 /* ───────────────────────── FOOTER ───────────────────────── */
 function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[var(--charcoal)] py-16 text-white">
+    <footer className="relative overflow-hidden bg-[var(--royal-deep)] py-16 text-white">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
