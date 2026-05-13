@@ -816,30 +816,38 @@ function Subsidiaries() {
   ];
   return (
     <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20 max-w-2xl">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-20 lg:px-12">
+        <div className="lg:col-span-5">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Subsidiary Brands</div>
           </Reveal>
           <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="One group," /> <span className="italic text-[var(--gold)]"><RevealLines text="many disciplines." /></span>
           </h2>
+          <Reveal delay={0.25}>
+            <p className="mt-8 max-w-md text-base font-light leading-[1.85] text-[var(--charcoal)]/70">
+              A constellation of complementary ventures — each operating to the same standard of discipline and design.
+            </p>
+          </Reveal>
         </div>
-        <div className="grid grid-cols-1 gap-px bg-[var(--charcoal)]/10 sm:grid-cols-2 lg:grid-cols-4">
-          {brands.map((b, i) => (
-            <motion.div
-              key={b.n}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.9 }}
-              className="group bg-[var(--ivory)] p-10 transition-all duration-700 hover:bg-white"
-            >
-              <div className="font-display text-2xl text-[var(--royal-deep)]">{b.n}</div>
-              <div className="mt-3 text-xs uppercase tracking-[0.2em] text-[var(--charcoal)]/50">{b.t}</div>
-              <div className="mt-8 h-px w-8 bg-[var(--gold)] transition-all duration-700 group-hover:w-20" />
-            </motion.div>
-          ))}
+        <div className="lg:col-span-7">
+          <div className="grid grid-cols-1 gap-px bg-[var(--charcoal)]/10 sm:grid-cols-2">
+            {brands.map((b, i) => (
+              <motion.div
+                key={b.n}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.9 }}
+                className="group relative overflow-hidden bg-[var(--ivory)] p-10 transition-all duration-700 hover:bg-white"
+              >
+                <div className="font-display text-2xl text-[var(--royal-deep)]">{b.n}</div>
+                <div className="mt-3 text-xs uppercase tracking-[0.2em] text-[var(--charcoal)]/50">{b.t}</div>
+                <div className="mt-8 h-px w-8 bg-[var(--gold)] transition-all duration-700 group-hover:w-20" />
+                <div className="font-display absolute right-6 top-6 text-5xl text-[var(--gold)]/15">0{i + 1}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
