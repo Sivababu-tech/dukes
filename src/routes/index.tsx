@@ -631,7 +631,7 @@ function Difference() {
     { t: "Architectural restraint", d: "Buildings designed to age well and remain quietly relevant." },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--charcoal)] py-32 text-white lg:py-44">
+    <section className="relative overflow-hidden bg-[var(--royal-deep)] py-32 text-white lg:py-44">
       <FloatingGradient />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 text-center">
