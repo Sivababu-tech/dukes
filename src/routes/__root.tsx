@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import favicon from "@/assets/favicon.png";
 
 function NotFoundComponent() {
   return (
@@ -72,23 +73,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Dukes Legacy is a luxury real estate website showcasing premium developments with a cinematic, elegant user experience." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Dukes Legacy is a luxury real estate website showcasing premium developments with a cinematic, elegant user experience." },
+      { title: "Dukes Realty — Building Timeless Spaces" },
+      { name: "description", content: "Dukes Legacy is a luxury real estate group specializing in premium residential, commercial, and plotted developments with over four decades of excellence." },
+      { property: "og:title", content: "Dukes Realty — Design. Discipline. Delight." },
+      { property: "og:description", content: "Luxury developments crafted with precision, trust, and long-term value." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Dukes Legacy is a luxury real estate website showcasing premium developments with a cinematic, elegant user experience." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0c589ba7-e873-428b-85db-63d3f679d803/id-preview-2638eab2--e90f9891-7dbb-4b58-9022-d8dd2cf76960.lovable.app-1778657566362.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0c589ba7-e873-428b-85db-63d3f679d803/id-preview-2638eab2--e90f9891-7dbb-4b58-9022-d8dd2cf76960.lovable.app-1778657566362.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dukes Realty — Building Timeless Spaces" },
+      { name: "twitter:description", content: "Luxury developments crafted with precision, trust, and long-term value." },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: favicon,
       },
     ],
   }),

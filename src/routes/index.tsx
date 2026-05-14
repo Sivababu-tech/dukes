@@ -1,4 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { color, motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { Nav } from "@/components/luxury/Nav";
 import { SmoothScroll } from "@/components/luxury/SmoothScroll";
@@ -13,6 +14,11 @@ import plottedImg from "@/assets/project-plotted.jpg";
 import blueprintImg from "@/assets/design-blueprint.jpg";
 import delightImg from "@/assets/delight-interior.jpg";
 import futureImg from "@/assets/future-city.jpg";
+import leader1 from "@/assets/leader-1.jpg";
+import leader2 from "@/assets/leader-2.jpg";
+import leader3 from "@/assets/leader-3.jpg";
+import leader4 from "@/assets/leader-4.jpg";
+import logoImg from "@/assets/Dukes-Logo.png";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -123,11 +129,11 @@ function Hero() {
         >
           <a href="#portfolio" className="group inline-flex items-center gap-4 bg-[var(--gold)] px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:shadow-[var(--shadow-gold)]">
             Explore Projects
-            <span className="h-px w-6 bg-current transition-all group-hover:w-12" />
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
           <a href="#legacy" className="group inline-flex items-center gap-4 border border-white/30 px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-white transition-all hover:border-[var(--gold)] hover:text-[var(--gold)]">
             Discover Legacy
-            <span className="h-px w-6 bg-current transition-all group-hover:w-12" />
+            <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </motion.div>
       </motion.div>
@@ -427,70 +433,109 @@ function Journey() {
     { y: "2019", t: "Plotted Communities", d: "Master-planned developments across micro-markets." },
     { y: "2024", t: "Pan-Format Developer", d: "Fully integrated luxury developer across all verticals." },
   ];
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
+    <section ref={containerRef} className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-24">
           <Reveal>
             <div className="eyebrow mb-6 flex items-center gap-4 text-[var(--gold)]">
               <span className="h-px w-10 bg-[var(--gold)]" />
               Our Journey
             </div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
+          {/* <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="Four decades of" /> <span className="italic text-[var(--gold)]"><RevealLines text="deliberate growth." /></span>
-          </h2>
+          </h2> */}
         </div>
 
         {/* Vertical timeline */}
-        <div className="relative">
+        <div className="relative min-h-[1200px]">
           {/* Center vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-[var(--charcoal)]/10 lg:left-1/2 lg:-translate-x-px">
+          <div className="absolute left-6 top-0 bottom-0 w-[2px] lg:left-1/2 lg:-translate-x-px">
             <motion.div
-              className="absolute inset-x-0 top-0 bg-gradient-to-b from-[var(--gold)] via-[var(--gold)] to-[var(--gold)]/20"
-              initial={{ height: '0%' }}
-              whileInView={{ height: '100%' }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+              style={{ scaleY, originY: 0 }}
+              className="absolute inset-x-0 top-0 bg-gradient-to-b from-[var(--gold)] via-[var(--gold)] to-[var(--gold)]/10 h-full"
             />
+
+            {/* The moving "forming" head */}
+            <motion.div
+              style={{
+                top: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+                opacity: useTransform(scrollYProgress, [0, 0.05, 0.95, 1], [0, 1, 1, 0])
+              }}
+              className="absolute left-1/2 -translate-x-1/2 z-20 h-4 w-4"
+            >
+              <div className="h-full w-full rounded-full bg-[var(--gold)] shadow-[0_0_20px_var(--gold)]" />
+              <motion.div
+                animate={{ scale: [1, 2], opacity: [0.5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="absolute inset-0 rounded-full bg-[var(--gold)]"
+              />
+            </motion.div>
           </div>
 
-          <div className="space-y-16 lg:space-y-20">
+          <div className="space-y-20 lg:space-y-32">
             {milestones.map((m, i) => {
               const isLeft = i % 2 === 0;
               return (
-                <motion.div
-                  key={m.y}
-                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative grid grid-cols-1 lg:grid-cols-2 lg:gap-16"
-                >
-                  {/* Dot */}
-                  <div className="absolute left-6 top-4 z-10 -translate-x-1/2 lg:left-1/2">
-                    <div className="h-3 w-3 rounded-full border-2 border-[var(--gold)] bg-[#F9F6F1] transition-all duration-500 hover:bg-[var(--gold)] hover:shadow-[0_0_16px_var(--gold)]" />
+                <div key={m.y} className="relative grid grid-cols-1 lg:grid-cols-2 lg:gap-24">
+                  {/* Dot animation tied to scroll */}
+                  <div className="absolute left-6 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 lg:left-1/2">
+                    <motion.div
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: false, margin: "-10% 0% -40% 0%" }}
+                      transition={{ duration: 0.5 }}
+                      className="h-4 w-4 rounded-full border-2 border-[var(--gold)] bg-[#F9F6F1] shadow-[0_0_15px_rgba(193,168,128,0.3)]"
+                    >
+                      <motion.div
+                        animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute inset-0 rounded-full bg-[var(--gold)]/30"
+                      />
+                    </motion.div>
                   </div>
 
                   {/* Card — left or right */}
-                  <div className={`pl-12 lg:pl-0 ${isLeft ? 'lg:pr-16 lg:text-right' : 'lg:col-start-2 lg:pl-16'}`}>
-                    <div className="group cursor-default">
-                      {/* Year */}
-                      <div className={`mb-2 font-display text-5xl lg:text-6xl text-[var(--royal-deep)]/15 transition-colors duration-500 group-hover:text-[var(--gold)]/30 ${isLeft ? 'lg:text-right' : ''}`}>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95, x: isLeft ? -20 : 20 }}
+                    whileInView={{ opacity: 1, scale: 1, x: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, x: isLeft ? -20 : 20 }}
+                    viewport={{ once: false, margin: "-10% 0% -40% 0%" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className={`ml-16 lg:ml-0 ${isLeft ? 'lg:pr-12' : 'lg:col-start-2 lg:pl-12'}`}
+                  >
+                    <div className={`group relative overflow-hidden bg-white p-8 lg:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-white transition-all duration-700 hover:border-[var(--gold)]/40 hover:shadow-luxury ${isLeft ? 'lg:text-right' : ''}`}>
+                      {/* Year watermark */}
+                      <div className={`absolute top-0 font-display text-[5rem] lg:text-[8rem] font-bold text-[var(--charcoal)]/[0.03] leading-none select-none transition-colors duration-700 group-hover:text-[var(--gold)]/5 ${isLeft ? 'right-4' : 'left-4'}`}>
                         {m.y}
                       </div>
-                      <div className={`flex items-center gap-3 ${isLeft ? 'lg:justify-end' : ''}`}>
-                        <span className="font-display text-3xl lg:text-4xl text-[var(--royal-deep)]">{m.y}</span>
+
+                      <div className={`relative flex flex-col ${isLeft ? 'lg:items-end' : ''}`}>
+                        <div className="font-display text-4xl lg:text-5xl text-[var(--royal-deep)]">{m.y}</div>
+                        <div className={`mt-3 flex items-center gap-3 ${isLeft ? 'lg:justify-end' : ''}`}>
+                          <span className="h-px w-8 bg-[var(--gold)] lg:hidden" />
+                          {!isLeft && <span className="hidden h-px w-8 bg-[var(--gold)] lg:block" />}
+                          <span className="eyebrow text-[var(--gold)]">{m.t}</span>
+                          {isLeft && <span className="hidden h-px w-8 bg-[var(--gold)] lg:block" />}
+                        </div>
+                        <p className={`mt-6 text-sm font-light leading-[1.8] text-[var(--charcoal)]/70 ${isLeft ? 'lg:ml-auto' : ''}`}>
+                          {m.d}
+                        </p>
                       </div>
-                      <div className={`mt-2 flex items-center gap-3 ${isLeft ? 'lg:justify-end' : ''}`}>
-                        <span className="h-px w-8 bg-[var(--gold)]/50 transition-all duration-500 group-hover:w-14 group-hover:bg-[var(--gold)]" />
-                        <span className="eyebrow text-[var(--gold)]">{m.t}</span>
-                      </div>
-                      <p className="mt-4 max-w-sm text-sm font-light leading-[1.8] text-[var(--charcoal)]/60">{m.d}</p>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </div>
               );
             })}
           </div>
@@ -522,15 +567,15 @@ function FmcgToRealty() {
             </div>
           </Reveal>
         </div>
-        <div className="lg:col-span-5 lg:col-start-8 lg:pt-12">
+        <div className="lg:col-span-5 lg:col-start-8 lg:pt-12" style={{ margin: "auto" }}>
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— From FMCG to Realty</div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2rem,3.8vw,3.8rem)] leading-[1.05] text-[var(--royal-deep)]">
+          {/* <h2 className="font-display text-[clamp(2rem,3.8vw,3.8rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="A global mindset," />
             <br />
             <span className="italic text-[var(--gold)]"><RevealLines text="brought home." /></span>
-          </h2>
+          </h2> */}
           <Reveal delay={0.2}>
             <p className="mt-10 text-base font-light leading-[1.85] text-[var(--charcoal)]/75">
               Three decades of operating consumer brands across more than 120 countries taught us how to build at scale without losing the detail. We carry that discipline into every plot, every floor, every door — applying global supply chain rigor to a craft that is, ultimately, about home.
@@ -582,7 +627,7 @@ function DesignDisciplineDelight() {
     },
   ];
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
+    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1', display: 'none' }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         {/* Header */}
         <div className="mb-20">
@@ -656,16 +701,16 @@ function Difference() {
     { t: "Architectural restraint", d: "Buildings designed to age well and remain quietly relevant." },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--charcoal)] py-32 text-white lg:py-44">
+    <section className="relative overflow-hidden py-32 text-white lg:py-44" style={{ backgroundColor: '#04073d' }}>
       <FloatingGradient />
       <div className="relative mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 text-center">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— What makes Dukes different</div>
           </Reveal>
-          <h2 className="mx-auto max-w-3xl font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05]">
+          {/* <h2 className="mx-auto max-w-3xl font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05]">
             <RevealLines text="Built to outlast" /> <span className="italic text-[var(--gold)]"><RevealLines text="the moment." /></span>
-          </h2>
+          </h2> */}
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {items.map((it, i) => (
@@ -718,31 +763,36 @@ function Portfolio() {
   const tabs = Object.keys(all);
   const [active, setActive] = useState(tabs[0]);
   return (
-    <section id="portfolio" className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
+    <section id="portfolio" className="relative overflow-hidden bg-[var(--ivory)] py-20 lg:py-44">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-16 flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
+        <div className="mb-12 flex flex-col items-start justify-between gap-10 lg:mb-20 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
             <Reveal>
-              <div className="eyebrow mb-8 text-[var(--gold)]">— Portfolio & Developments</div>
+              <div className="eyebrow mb-6 text-[var(--gold)] lg:mb-8">— Portfolio & Developments</div>
             </Reveal>
-            <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
-              <RevealLines text="Selected" /> <span className="italic text-[var(--gold)]"><RevealLines text="works." /></span>
-            </h2>
           </div>
-          <div className="flex flex-wrap gap-1 border-b border-[var(--charcoal)]/15">
-            {tabs.map((t) => (
-              <button
-                key={t}
-                onClick={() => setActive(t)}
-                className={`relative px-5 py-3 text-[11px] uppercase tracking-[0.22em] transition-colors ${active === t ? "text-[var(--royal-deep)]" : "text-[var(--charcoal)]/50 hover:text-[var(--royal-deep)]"
-                  }`}
-              >
-                {t}
-                {active === t && (
-                  <motion.span layoutId="tab" className="absolute inset-x-0 -bottom-px h-px bg-[var(--gold)]" />
-                )}
-              </button>
-            ))}
+
+          {/* Mobile Scrollable Tabs with Hint Fade */}
+          <div className="relative w-full lg:w-auto">
+            <div className="overflow-x-auto pb-4 no-scrollbar lg:overflow-visible lg:pb-0">
+              <div className="flex min-w-max gap-1 border-b border-[var(--charcoal)]/15">
+                {tabs.map((t) => (
+                  <button
+                    key={t}
+                    onClick={() => setActive(t)}
+                    className={`relative cursor-pointer px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-colors lg:px-6 lg:text-[11px] lg:tracking-[0.22em] ${active === t ? "text-[var(--royal-deep)]" : "text-[var(--charcoal)]/50 hover:text-[var(--royal-deep)]"
+                      }`}
+                  >
+                    {t}
+                    {active === t && (
+                      <motion.span layoutId="tab" className="absolute inset-x-0 -bottom-px h-px bg-[var(--gold)]" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {/* Gradient Hint (Right Side) */}
+            <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-[var(--ivory)] to-transparent lg:hidden" />
           </div>
         </div>
 
@@ -765,7 +815,7 @@ function Portfolio() {
 function ProjectCard({ p }: { p: Project }) {
   return (
     <a href="#contact" className="group relative block overflow-hidden bg-[var(--royal-deep)]">
-      <div className="aspect-[4/5] overflow-hidden">
+      <div className="aspect-[16/10] overflow-hidden">
         <img
           src={p.img}
           alt={p.name}
@@ -776,15 +826,18 @@ function ProjectCard({ p }: { p: Project }) {
       <div className="absolute inset-0 transition-all duration-700" style={{
         background: "linear-gradient(180deg, transparent 40%, color-mix(in oklab, var(--royal-deep) 90%, transparent))"
       }} />
-      <div className="absolute inset-x-0 bottom-0 p-10 text-white">
-        <div className="eyebrow text-[var(--gold)]">{p.cat}</div>
-        <div className="mt-3 flex items-end justify-between">
+      <div className="absolute inset-x-0 bottom-0 p-6 text-white lg:p-10">
+        <div className="eyebrow text-[10px] text-[var(--gold)] lg:text-xs">{p.cat}</div>
+        <div className="mt-2 flex items-end justify-between lg:mt-3">
           <div>
-            <h3 className="font-display text-3xl">{p.name}</h3>
+            <h3 className="font-display text-2xl lg:text-3xl">{p.name}</h3>
             <div className="mt-1 text-sm font-light text-white/70">{p.loc}</div>
           </div>
           <div className="translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-            <span className="inline-block border border-[var(--gold)] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[var(--gold)]">View</span>
+            <span className="inline-flex items-center gap-2 border border-[var(--gold)] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[var(--gold)]">
+              View
+              <ArrowRight size={12} />
+            </span>
           </div>
         </div>
       </div>
@@ -795,23 +848,32 @@ function ProjectCard({ p }: { p: Project }) {
 
 /* ───────────────────────── CLIENTELE (marquee) ───────────────────────── */
 function Clientele() {
-  const brands = ["NESTLÉ", "UNILEVER", "P&G", "PHILIPS", "RECKITT", "L'ORÉAL", "DANONE", "COLGATE", "HENKEL", "PEPSICO"];
-  const row = [...brands, ...brands];
+  const partners = [
+    "Reliance", "Decathlon", "PVR Inox", "Barista", "Vijaya Diagnostics", 
+    "Aptronix", "Max", "Cultsport", "Thickshake Factory", "Gelato Italiano", 
+    "Amoeba", "Juhi Hospital", "Kyomi", "SWGCCL"
+  ];
+  const row = [...partners, ...partners];
   return (
-    <section className="relative overflow-hidden border-y border-[var(--charcoal)]/10 bg-white py-20">
-      <div className="mb-10 text-center">
-        <div className="eyebrow text-[var(--gold)]">— Clientele & Partners</div>
+    <section className="relative overflow-hidden border-y border-[var(--charcoal)]/10 bg-white py-24">
+      <div className="mb-12 text-center">
+        <Reveal>
+          <div className="eyebrow text-[var(--gold)]">— Trusted Partners & Clientele</div>
+        </Reveal>
       </div>
       <div className="relative">
-        <div className="marquee flex w-max gap-20 whitespace-nowrap">
+        <div className="marquee flex w-max gap-24 whitespace-nowrap">
           {row.map((b, i) => (
-            <span key={i} className="font-display text-3xl tracking-[0.2em] text-[var(--charcoal)]/30 transition-colors duration-500 hover:text-[var(--gold)]">
-              {b}
-            </span>
+            <div key={i} className="flex items-center gap-4">
+              <span className="font-display text-2xl tracking-[0.15em] text-[var(--charcoal)]/40 transition-colors duration-500 hover:text-[var(--royal-deep)] lg:text-3xl">
+                {b.toUpperCase()}
+              </span>
+              <div className="h-1 w-1 rounded-full bg-[var(--gold)]/20" />
+            </div>
           ))}
         </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-white to-transparent" />
       </div>
     </section>
   );
@@ -826,15 +888,15 @@ function Subsidiaries() {
     { n: "Dukes Capital", t: "Investments & holdings" },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
+    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44" style={{ display: 'none' }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 max-w-2xl">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Subsidiary Brands</div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
+          {/* <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="One group," /> <span className="italic text-[var(--gold)]"><RevealLines text="many disciplines." /></span>
-          </h2>
+          </h2> */}
         </div>
         <div className="grid grid-cols-1 gap-px bg-[var(--charcoal)]/10 sm:grid-cols-2 lg:grid-cols-4">
           {brands.map((b, i) => (
@@ -860,25 +922,26 @@ function Subsidiaries() {
 /* ───────────────────────── LEADERSHIP ───────────────────────── */
 function Leadership() {
   const people = [
-    { n: "A. R. Dukes", r: "Chairman", q: "We do not chase trends. We outlast them." },
-    { n: "Karan Dukes", r: "Managing Director", q: "Discipline is the most underrated luxury." },
-    { n: "Rhea Mehta", r: "Chief Architect", q: "A building should age into its own beauty." },
+    { n: "A. R. Dukes", r: "Chairman", q: "We do not chase trends. We outlast them.", i: leader1 },
+    { n: "Karan Dukes", r: "Managing Director", q: "Discipline is the most underrated luxury.", i: leader2 },
+    { n: "Rhea Mehta", r: "Chief Architect", q: "A building should age into its own beauty.", i: leader3 },
+    { n: "Vikram Shah", r: "Structural Lead", q: "Engineering is the silent foundation of art.", i: leader4 },
   ];
   return (
-    <section id="leadership" className="relative overflow-hidden bg-white py-32 lg:py-44">
+    <section id="leadership" className="relative overflow-hidden py-32 lg:py-44" style={{ backgroundColor: '#f9f6f1' }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 max-w-2xl">
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Leadership</div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
+          {/* <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
             <RevealLines text="The hands" /> <span className="italic text-[var(--gold)]"><RevealLines text="behind the work." /></span>
-          </h2>
+          </h2> */}
         </div>
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {people.map((p, i) => (
             <motion.div
-              key={p.n}
+              key={`${p.n}-${i}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -886,13 +949,13 @@ function Leadership() {
               className="group"
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-[var(--royal-deep)]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-[10rem] text-white/10">{p.n.split(" ").map((s) => s[0]).join("")}</span>
-                </div>
-                <div className="absolute inset-0 flex items-end p-8 opacity-0 transition-opacity duration-700 group-hover:opacity-100" style={{
-                  background: "linear-gradient(180deg, transparent 50%, color-mix(in oklab, var(--royal-deep) 95%, transparent))"
-                }}>
-                  <p className="font-display text-xl italic text-white">"{p.q}"</p>
+                <img 
+                  src={p.i} 
+                  alt={p.n} 
+                  className="h-full w-full object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <span className="font-display text-[10rem] text-white/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100">{p.n.split(" ").map((s) => s[0]).join("")}</span>
                 </div>
               </div>
               <div className="mt-6">
@@ -928,15 +991,59 @@ function FutureVision() {
             Future Vision
           </div>
         </Reveal>
-        <h2 className="max-w-5xl font-display text-[clamp(2.5rem,7vw,7.5rem)] leading-[0.95] text-white">
-          <RevealLines text="The next chapter" /><br />
-          <span className="italic text-[var(--gold)]"><RevealLines text="is already underway." /></span>
-        </h2>
-        <Reveal delay={0.3}>
-          <p className="mt-12 max-w-xl text-lg font-light leading-[1.8] text-white/75">
-            Smart cities. Sustainable communities. Architecture that anticipates how we will live a decade from now.
-          </p>
-        </Reveal>
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <h2 className="mb-8 font-display text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[0.95] text-white">
+              <RevealLines text="Vision for the" /><br />
+              <span className="italic text-[var(--gold)]"><RevealLines text="Future." /></span>
+            </h2>
+            <Reveal delay={0.3}>
+              <p className="text-lg font-light leading-[1.8] text-white/75 lg:text-xl">
+                At Dukes Realty, we aim to become a trusted and preferred real estate brand, known for delivering high-quality developments with strong investment potential.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="space-y-12 lg:col-span-5 lg:col-start-8 lg:pt-8">
+            {/* Focus Areas */}
+            <div className="space-y-6">
+              <Reveal>
+                <div className="eyebrow text-[var(--gold)]">Focus Areas</div>
+              </Reveal>
+              <ul className="space-y-4">
+                {[
+                  "Expanding into premium developments",
+                  "Entering new high-growth markets",
+                  "Scaling integrated residential and commercial projects"
+                ].map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 + (i * 0.1) }}
+                    className="flex items-center gap-4 text-white/70"
+                  >
+                    <div className="h-px w-6 bg-[var(--gold)]" />
+                    <span className="text-sm uppercase tracking-widest lg:text-base">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Ambition */}
+            <div className="space-y-6 pt-8 border-t border-white/10">
+              <Reveal delay={0.6}>
+                <div className="eyebrow text-[var(--gold)]">Long-Term Ambition</div>
+              </Reveal>
+              <Reveal delay={0.7}>
+                <p className="text-base font-light leading-[1.7] text-white/60">
+                  We strive to build a legacy-driven organization that continues to create value across industries while strengthening our position as a trusted name.
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -948,14 +1055,14 @@ function Contact() {
     <section id="contact" className="relative overflow-hidden bg-[var(--royal-deep)] py-32 text-white lg:py-44">
       <FloatingGradient />
       <div className="relative mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-6 lg:grid-cols-12 lg:gap-24 lg:px-12">
-        <div className="lg:col-span-6">
+        <div className="lg:col-span-6" style={{ margin: "auto" }}>
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Begin a conversation</div>
           </Reveal>
-          <h2 className="font-display text-[clamp(2.5rem,5vw,5.5rem)] leading-[1] text-white">
+          {/* <h2 className="font-display text-[clamp(2.5rem,5vw,5.5rem)] leading-[1] text-white">
             <RevealLines text="Schedule a" /><br />
             <span className="italic text-[var(--gold)]"><RevealLines text="private consultation." /></span>
-          </h2>
+          </h2> */}
           <Reveal delay={0.2}>
             <p className="mt-10 max-w-md text-base font-light leading-[1.85] text-white/70">
               Our team responds personally within one business day. All inquiries are held in confidence.
@@ -988,10 +1095,10 @@ function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
             onSubmit={(e) => e.preventDefault()}
-            className="glass relative p-10 lg:p-12"
+            className="glass relative p-8 lg:p-10"
           >
             <div className="absolute -inset-px -z-10 opacity-50" style={{ background: "linear-gradient(135deg, color-mix(in oklab, var(--gold) 30%, transparent), transparent 60%)" }} />
-            <div className="space-y-8">
+            <div className="space-y-6">
               {[
                 { l: "Full name", t: "text" },
                 { l: "Email address", t: "email" },
@@ -999,10 +1106,10 @@ function Contact() {
               ].map((f) => (
                 <Field key={f.l} label={f.l} type={f.t} />
               ))}
-              <FieldArea label="How can we help" />
-              <button type="submit" className="group inline-flex w-full items-center justify-between border border-[var(--gold)] bg-[var(--gold)] px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:bg-transparent hover:text-[var(--gold)]">
+              <FieldArea label="Message" />
+              <button type="submit" className="group cursor-pointer inline-flex w-full items-center justify-between border border-[var(--gold)] bg-[var(--gold)] px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:bg-transparent hover:text-[var(--gold)]">
                 Send inquiry
-                <span className="h-px w-8 bg-current transition-all group-hover:w-14" />
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
           </motion.form>
@@ -1015,10 +1122,12 @@ function Contact() {
 function Field({ label, type }: { label: string; type: string }) {
   return (
     <label className="block">
-      <div className="eyebrow mb-3 text-white/50">{label}</div>
+      <div className="eyebrow mb-2 text-white/50">{label}</div>
       <input
         type={type}
-        className="w-full border-b border-white/20 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)]"
+        required
+        placeholder={`Enter ${label.toLowerCase()}`}
+        className="w-full border-b border-white/20 bg-transparent py-2 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/10 placeholder:text-[10px]"
       />
     </label>
   );
@@ -1026,10 +1135,12 @@ function Field({ label, type }: { label: string; type: string }) {
 function FieldArea({ label }: { label: string }) {
   return (
     <label className="block">
-      <div className="eyebrow mb-3 text-white/50">{label}</div>
+      <div className="eyebrow mb-2 text-white/50">{label}</div>
       <textarea
-        rows={3}
-        className="w-full resize-none border-b border-white/20 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)]"
+        rows={2}
+        required
+        placeholder="How can we help you?"
+        className="w-full resize-none border-b border-white/20 bg-transparent py-2 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/10 placeholder:text-[10px]"
       />
     </label>
   );
@@ -1038,24 +1149,24 @@ function FieldArea({ label }: { label: string }) {
 /* ───────────────────────── FOOTER ───────────────────────── */
 function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[var(--charcoal)] py-16 text-white">
+    <footer className="relative overflow-hidden border-t border-[var(--charcoal)]/10 bg-white py-24 text-[var(--charcoal)] lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <div className="font-display text-3xl">Dukes <span className="text-[var(--gold)]">Realty</span></div>
-            <p className="mt-4 max-w-sm text-sm font-light text-white/50">Building timeless spaces for modern living since 1988.</p>
+            <img src={logoImg} alt="Dukes Realty" className="h-12 w-auto" />
+            <p className="mt-4 max-w-sm text-sm font-light text-[var(--charcoal)]/60">Building timeless spaces for modern living since 1988.</p>
           </div>
           {[
             { t: "Explore", l: ["Legacy", "Portfolio", "Leadership", "Contact"] },
-            { t: "Connect", l: ["LinkedIn", "Instagram", "Press", "Careers"] },
+            { t: "Connect", l: ["LinkedIn", "Instagram", "YouTube"] },
           ].map((col) => (
             <div key={col.t}>
               <div className="eyebrow mb-6 text-[var(--gold)]">{col.t}</div>
               <ul className="space-y-3">
                 {col.l.map((it) => (
                   <li key={it}>
-                    <a href="#" className="group inline-flex items-center text-sm text-white/70 transition-colors hover:text-[var(--gold)]">
-                      <span className="inline-block w-0 overflow-hidden bg-current transition-all duration-500 group-hover:mr-3 group-hover:w-6 group-hover:bg-[var(--gold)]" style={{ height: 1 }} />
+                    <a href="#" className="group inline-flex items-center text-sm text-[var(--charcoal)]/70 transition-colors hover:text-[var(--royal-deep)]">
+                      <ArrowRight size={12} className="mr-2 h-0 w-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:h-3 group-hover:w-3 group-hover:opacity-100" />
                       {it}
                     </a>
                   </li>
@@ -1064,12 +1175,12 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-16 gold-line h-px w-full opacity-30" />
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 text-xs text-white/40 md:flex-row md:items-center">
+        <div className="mt-16 h-px w-full bg-[var(--charcoal)]/5" />
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 text-xs text-[var(--charcoal)]/40 md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} Dukes Realty. All rights reserved.</div>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-[var(--gold)]">Privacy</a>
-            <a href="#" className="hover:text-[var(--gold)]">Terms</a>
+            <a href="#" className="hover:text-[var(--royal-deep)] transition-colors">Privacy</a>
+            <a href="#" className="hover:text-[var(--royal-deep)] transition-colors">Terms</a>
           </div>
         </div>
       </div>
