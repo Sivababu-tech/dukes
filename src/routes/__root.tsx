@@ -4,12 +4,10 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  HeadContent,
-  Scripts,
 } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
-import favicon from "@/assets/favicon.png";
+import { Toaster } from "sonner";
+import React from "react";
+import "../styles.css";
 
 function NotFoundComponent() {
   return (
@@ -69,50 +67,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Dukes Realty — Building Timeless Spaces" },
-      { name: "description", content: "Dukes Legacy is a luxury real estate group specializing in premium residential, commercial, and plotted developments with over four decades of excellence." },
-      { property: "og:title", content: "Dukes Realty — Design. Discipline. Delight." },
-      { property: "og:description", content: "Luxury developments crafted with precision, trust, and long-term value." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Dukes Realty — Building Timeless Spaces" },
-      { name: "twitter:description", content: "Luxury developments crafted with precision, trust, and long-term value." },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      {
-        rel: "icon",
-        type: "image/png",
-        href: favicon,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -120,6 +78,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
 }

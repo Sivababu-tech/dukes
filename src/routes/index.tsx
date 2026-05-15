@@ -20,6 +20,7 @@ import leader3 from "@/assets/leader-3.jpg";
 import leader4 from "@/assets/leader-4.jpg";
 import logoImg from "@/assets/Dukes-Logo.png";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -627,7 +628,7 @@ function DesignDisciplineDelight() {
     },
   ];
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1', display: 'none' }}>
+    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         {/* Header */}
         <div className="mb-20">
@@ -888,7 +889,7 @@ function Subsidiaries() {
     { n: "Dukes Capital", t: "Investments & holdings" },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44" style={{ display: 'none' }}>
+    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 max-w-2xl">
           <Reveal>
@@ -1094,20 +1095,54 @@ function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              toast.success("Inquiry sent successfully. Our team will contact you soon.");
+              (e.target as HTMLFormElement).reset();
+            }}
             className="glass relative p-8 lg:p-10"
           >
             <div className="absolute -inset-px -z-10 opacity-50" style={{ background: "linear-gradient(135deg, color-mix(in oklab, var(--gold) 30%, transparent), transparent 60%)" }} />
-            <div className="space-y-6">
-              {[
-                { l: "Full name", t: "text" },
-                { l: "Email address", t: "email" },
-                { l: "Telephone", t: "tel" },
-              ].map((f) => (
-                <Field key={f.l} label={f.l} type={f.t} />
-              ))}
-              <FieldArea label="Message" />
-              <button type="submit" className="group cursor-pointer inline-flex w-full items-center justify-between border border-[var(--gold)] bg-[var(--gold)] px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:bg-transparent hover:text-[var(--gold)]">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <label className="block">
+                  <div className="eyebrow mb-2 text-white/50">Full name</div>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter full name"
+                    className="w-full border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
+                  />
+                </label>
+                <label className="block">
+                  <div className="eyebrow mb-2 text-white/50">Email address</div>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter email address"
+                    className="w-full border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
+                  />
+                </label>
+                <label className="block">
+                  <div className="eyebrow mb-2 text-white/50">Telephone</div>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="Enter telephone"
+                    className="w-full border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
+                  />
+                </label>
+                <label className="block">
+                  <div className="eyebrow mb-2 text-white/50">Message</div>
+                  <textarea
+                    rows={3}
+                    required
+                    placeholder="How can we help you?"
+                    className="w-full resize-none border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
+                  />
+                </label>
+              </div>
+              <button type="submit" className="group cursor-pointer inline-flex w-full items-center justify-between border border-[var(--gold)] bg-[var(--gold)] px-8 py-5 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:bg-transparent hover:text-[var(--gold)]">
                 Send inquiry
                 <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </button>
