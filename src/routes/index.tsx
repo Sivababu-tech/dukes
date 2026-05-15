@@ -628,7 +628,7 @@ function DesignDisciplineDelight() {
     },
   ];
   return (
-    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1' }}>
+    <section className="relative overflow-hidden py-24 lg:py-32" style={{ backgroundColor: '#F9F6F1', display: "none" }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         {/* Header */}
         <div className="mb-20">
@@ -850,8 +850,8 @@ function ProjectCard({ p }: { p: Project }) {
 /* ───────────────────────── CLIENTELE (marquee) ───────────────────────── */
 function Clientele() {
   const partners = [
-    "Reliance", "Decathlon", "PVR Inox", "Barista", "Vijaya Diagnostics", 
-    "Aptronix", "Max", "Cultsport", "Thickshake Factory", "Gelato Italiano", 
+    "Reliance", "Decathlon", "PVR Inox", "Barista", "Vijaya Diagnostics",
+    "Aptronix", "Max", "Cultsport", "Thickshake Factory", "Gelato Italiano",
     "Amoeba", "Juhi Hospital", "Kyomi", "SWGCCL"
   ];
   const row = [...partners, ...partners];
@@ -889,7 +889,7 @@ function Subsidiaries() {
     { n: "Dukes Capital", t: "Investments & holdings" },
   ];
   return (
-    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44">
+    <section className="relative overflow-hidden bg-[var(--ivory)] py-32 lg:py-44" style={{ display: "none", }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="mb-20 max-w-2xl">
           <Reveal>
@@ -950,10 +950,10 @@ function Leadership() {
               className="group"
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-[var(--royal-deep)]">
-                <img 
-                  src={p.i} 
-                  alt={p.n} 
-                  className="h-full w-full object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110" 
+                <img
+                  src={p.i}
+                  alt={p.n}
+                  className="h-full w-full object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                   <span className="font-display text-[10rem] text-white/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100">{p.n.split(" ").map((s) => s[0]).join("")}</span>
@@ -1184,12 +1184,12 @@ function FieldArea({ label }: { label: string }) {
 /* ───────────────────────── FOOTER ───────────────────────── */
 function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--charcoal)]/10 bg-white py-24 text-[var(--charcoal)] lg:py-32">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#04073D] py-24 text-white lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <img src={logoImg} alt="Dukes Realty" className="h-12 w-auto" />
-            <p className="mt-4 max-w-sm text-sm font-light text-[var(--charcoal)]/60">Building timeless spaces for modern living since 1988.</p>
+            <img src={logoImg} alt="Dukes Realty" className="h-12 w-auto brightness-0 invert" />
+            <p className="mt-4 max-w-sm text-sm font-light text-white/60">Building timeless spaces for modern living since 1988.</p>
           </div>
           {[
             { t: "Explore", l: ["Legacy", "Portfolio", "Leadership", "Contact"] },
@@ -1200,7 +1200,7 @@ function Footer() {
               <ul className="space-y-3">
                 {col.l.map((it) => (
                   <li key={it}>
-                    <a href="#" className="group inline-flex items-center text-sm text-[var(--charcoal)]/70 transition-colors hover:text-[var(--royal-deep)]">
+                    <a href="#" className="group inline-flex items-center text-sm text-white/70 transition-colors hover:text-[var(--gold)]">
                       <ArrowRight size={12} className="mr-2 h-0 w-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:h-3 group-hover:w-3 group-hover:opacity-100" />
                       {it}
                     </a>
@@ -1210,12 +1210,12 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-16 h-px w-full bg-[var(--charcoal)]/5" />
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 text-xs text-[var(--charcoal)]/40 md:flex-row md:items-center">
+        <div className="mt-16 h-px w-full bg-white/5" />
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 text-xs text-white/40 md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} Dukes Realty. All rights reserved.</div>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-[var(--royal-deep)] transition-colors">Privacy</a>
-            <a href="#" className="hover:text-[var(--royal-deep)] transition-colors">Terms</a>
+            <a href="#" className="hover:text-[var(--gold)] transition-colors">Privacy</a>
+            <a href="#" className="hover:text-[var(--gold)] transition-colors">Terms</a>
           </div>
         </div>
       </div>
