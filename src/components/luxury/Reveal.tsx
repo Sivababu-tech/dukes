@@ -37,7 +37,7 @@ export function RevealLines({ text, className }: { text: string; className?: str
   return (
     <span className={className}>
       {words.map((w, i) => (
-        <span key={i} className="inline-block overflow-hidden align-bottom">
+        <span key={i} className="inline-block overflow-hidden align-bottom pb-2 -mb-2">
           <motion.span
             className="inline-block"
             initial={{ y: "110%" }}

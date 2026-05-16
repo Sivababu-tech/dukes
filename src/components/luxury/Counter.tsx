@@ -18,5 +18,29 @@ export function Counter({ to, suffix = "", duration = 2000 }: { to: number; suff
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [inView, to, duration]);
-  return <span ref={ref}>{n.toLocaleString()}{suffix}</span>;
+  const renderNumber = (num: number) => {
+    const str = num.toLocaleString();
+    return str.split("").map((c, i) => (
+      c === "1" ? (
+        <span key={i} className="inline-block translate-y-[0.05em] leading-none scale-x-[0.75] origin-center" style={{ fontFamily: "Georgia, serif", fontSize: "0.86em", fontWeight: 300 }}>
+          {c}
+        </span>
+      ) : c
+    ));
+  };
+
+  return (
+    <span ref={ref}>
+      <span className="tabular-nums">{renderNumber(n)}</span>
+      {suffix && (
+        <span className={`tracking-normal ml-1 inline-block align-middle ${
+          suffix.length > 1 
+            ? "text-[0.8rem] lg:text-[1rem] font-sans uppercase opacity-80" 
+            : "text-[0.8em] -translate-y-[0.1em] opacity-100"
+        }`}>
+          {suffix}
+        </span>
+      )}
+    </span>
+  );
 }

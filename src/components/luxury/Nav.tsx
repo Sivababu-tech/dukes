@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import logoImg from "@/assets/Dukes-Logo.png";
 
 const links = [
-  { href: "#legacy", label: "Legacy" },
-  { href: "#scale", label: "Scale" },
+  { href: "#legacy", label: "About Us" },
   { href: "#philosophy", label: "Philosophy" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#leadership", label: "Leadership" },
@@ -38,29 +37,29 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
-          scrolled || isOpen ? "py-3 glass-light" : "py-6 bg-transparent"
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${scrolled || isOpen ? "py-3 glass-light" : "py-6 bg-transparent"
+          }`}
         style={scrolled || isOpen ? { borderBottom: "1px solid color-mix(in oklab, var(--charcoal) 10%, transparent)" } : undefined}
       >
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-12">
-          <a href="#top" className="group flex items-center">
-            <img 
-              src={logoImg} 
-              alt="Dukes Realty" 
-              className="h-10 w-auto transition-all duration-500" 
-            />
-          </a>
+          <div className="flex-1">
+            <a href="#top" className="group flex items-center">
+              <img
+                src={logoImg}
+                alt="Dukes Realty"
+                className="h-10 md:h-12 lg:h-14 xl:h-16 w-auto transition-all duration-500"
+              />
+            </a>
+          </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-10 md:flex">
+          <nav className="hidden items-center gap-5 lg:gap-10 lg:flex">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
-                className={`group relative text-[12px] font-medium uppercase tracking-[0.22em] transition-colors duration-500 ${
-                  scrolled && !isOpen ? "text-[var(--charcoal)]/70 hover:text-[var(--royal-deep)]" : "text-white/70 hover:text-white"
-                }`}
+                className={`group relative text-[11px] lg:text-[12px] font-medium uppercase tracking-[0.18em] lg:tracking-[0.22em] transition-colors duration-500 ${scrolled && !isOpen ? "text-[var(--charcoal)]/70 hover:text-[var(--royal-deep)]" : "text-white/70 hover:text-white"
+                  }`}
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-[var(--gold)] transition-all duration-500 group-hover:w-full" />
@@ -68,14 +67,13 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-1 items-center justify-end gap-6">
             <a
               href="#contact"
-              className={`group hidden items-center gap-3 border px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] transition-all md:inline-flex ${
-                scrolled && !isOpen 
-                  ? "border-[var(--royal-deep)]/20 text-[var(--royal-deep)] hover:border-[var(--gold)] hover:text-[var(--gold)]" 
-                  : "border-white/20 text-white hover:border-[var(--gold)] hover:text-[var(--gold)]"
-              }`}
+              className={`group hidden items-center gap-3 border px-5 py-2.5 text-[11px] uppercase tracking-[0.24em] transition-all lg:inline-flex ${scrolled && !isOpen
+                ? "border-[var(--royal-deep)]/20 text-[var(--royal-deep)] hover:border-[var(--gold)] hover:text-[var(--gold)]"
+                : "border-white/20 text-white hover:border-[var(--gold)] hover:text-[var(--gold)]"
+                }`}
             >
               Schedule
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
@@ -84,9 +82,8 @@ export function Nav() {
             {/* Mobile Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`relative z-50 flex h-10 w-10 items-center justify-center transition-colors duration-500 md:hidden ${
-                scrolled && !isOpen ? "text-[var(--royal-deep)]" : "text-white"
-              }`}
+              className={`relative z-50 flex h-10 w-10 items-center justify-center transition-colors duration-500 lg:hidden ${scrolled && !isOpen ? "text-[var(--royal-deep)]" : "text-white"
+                }`}
               aria-label="Toggle Menu"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -104,21 +101,21 @@ export function Nav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-[60] bg-[var(--royal-deep)]/80 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[60] bg-[var(--royal-deep)]/80 backdrop-blur-sm lg:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 z-[70] flex w-full max-w-[320px] flex-col bg-[var(--royal-deep)] p-8 shadow-2xl md:hidden"
+              className="fixed inset-y-0 right-0 z-[70] flex w-full max-w-[320px] flex-col bg-[var(--royal-deep)] p-8 shadow-2xl lg:hidden"
             >
               <div className="flex flex-col h-full">
                 <div className="mb-12 flex items-center justify-between">
                   <div className="flex items-center">
-                    <img src={logoImg} alt="Dukes Realty" className="h-8 w-auto" />
+                    <img src={logoImg} alt="Dukes Realty" className="h-12 w-auto" />
                   </div>
-                  <button 
+                  <button
                     onClick={() => setIsOpen(false)}
                     className="flex h-10 w-10 items-center justify-center text-white/50 transition-colors hover:text-white"
                   >
@@ -152,7 +149,7 @@ export function Nav() {
                     Private Consultation
                     <ArrowRight size={14} />
                   </a>
-                  
+
                   <div className="mt-8 space-y-4 opacity-50">
                     <div className="text-[10px] uppercase tracking-widest text-[var(--gold)]">Follow Us</div>
                     <div className="flex gap-6 text-[10px] uppercase tracking-widest text-white">
