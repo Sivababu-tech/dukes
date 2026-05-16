@@ -80,19 +80,18 @@ function Hero() {
       {/* floating gold particles */}
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-6 lg:justify-end lg:pb-28 lg:px-12">
+      <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-6 pt-24 lg:pt-32 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="eyebrow mb-4 md:mb-6 lg:mb-8 flex items-center gap-4 text-[var(--gold)] text-[10px] lg:text-xs"
+          className="eyebrow mb-4 lg:mb-8 flex items-center gap-4 text-[var(--gold)] text-[9px] lg:text-[10px]"
         >
-          <span className="h-px w-12 bg-[var(--gold)]" />
+          <span className="h-px w-10 lg:w-12 bg-[var(--gold)]" />
           Design. Discipline. Delight.
         </motion.div>
-
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[9rem] leading-[0.95] text-white">
-          <span className="block overflow-hidden pb-4 -mb-4">
+        <h1 className="font-display text-[clamp(2.5rem,7.5vw,7.5rem)] leading-[0.95] text-white">
+          <span className="block overflow-hidden pb-6 -mb-6">
             <motion.span
               className="block"
               initial={{ y: "110%" }}
@@ -102,7 +101,7 @@ function Hero() {
               Building Timeless
             </motion.span>
           </span>
-          <span className="block overflow-hidden pb-4 -mb-4">
+          <span className="block overflow-hidden pb-6 -mb-6">
             <motion.span
               className="block italic text-[var(--gold-soft)]"
               initial={{ y: "110%" }}
@@ -127,7 +126,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.2 }}
-          className="mt-12 flex flex-wrap items-center gap-6"
+          className="mt-10 lg:mt-12 flex flex-wrap items-center gap-6"
         >
           <a href="#portfolio" className="group inline-flex items-center gap-4 bg-[var(--gold)] px-6 py-3 lg:px-8 lg:py-4 text-[10px] lg:text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:shadow-[var(--shadow-gold)]">
             Explore Projects
