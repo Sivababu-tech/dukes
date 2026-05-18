@@ -19,6 +19,9 @@ import leader2 from "@/assets/leader-2.jpg";
 import leader3 from "@/assets/leader-3.jpg";
 import leader4 from "@/assets/leader-4.jpg";
 import logoImg from "@/assets/Dukes-Logo.png";
+import phil1Img from "@/assets/phil-1.png";
+import phil2Img from "@/assets/phil-2.png";
+import phil3Img from "@/assets/phil-3.png";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -332,42 +335,49 @@ function FloatingGradient() {
 /* ───────────────────────── PHILOSOPHY ───────────────────────── */
 function Philosophy() {
   const points = [
-    { t: "Long-term value", d: "We build for generations, not quarters. Every plan begins with a horizon measured in decades." },
-    { t: "Disciplined execution", d: "Forty years of operational rigor across continents, brought to every blueprint and beam." },
-    { t: "Human-centered design", d: "Architecture that serves the rituals of daily life — light, air, dignity, calm." },
+    { t: "Long-term value", d: "We build for generations, not quarters. Every plan begins with a horizon measured in decades.", img: phil1Img },
+    { t: "Disciplined execution", d: "Forty years of operational rigor across continents, brought to every blueprint and beam.", img: phil2Img },
+    { t: "Human-centered design", d: "Architecture that serves the rituals of daily life — light, air, dignity, calm.", img: phil3Img },
   ];
   return (
-    <section id="philosophy" className="relative overflow-hidden bg-[var(--ivory)] py-20 lg:py-28">
+    <section id="philosophy" className="relative bg-[var(--ivory)] py-24 lg:py-32">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-24 max-w-2xl">
-          <Reveal>
-            <div className="eyebrow mb-8 flex items-center gap-4 text-[var(--gold)]">
-              <span className="h-px w-10 bg-[var(--gold)]" />
-              Our Philosophy
-            </div>
-          </Reveal>
-          {/* <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
-            <RevealLines text="A quieter" /> <span className="italic text-[var(--gold)]"><RevealLines text="kind of luxury." /></span>
-          </h2> */}
-        </div>
-        <div className="space-y-px bg-[var(--charcoal)]/10">
+        <Reveal>
+          <div className="eyebrow mb-12 flex items-center gap-4 text-[var(--gold)]">
+            <span className="h-px w-10 bg-[var(--gold)]" />
+            Our Philosophy
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {points.map((p, i) => (
             <motion.div
               key={p.t}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1.1, delay: i * 0.1 }}
-              className="group grid grid-cols-12 gap-8 bg-[var(--ivory)] py-12 transition-all duration-700"
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, delay: i * 0.15 }}
+              className="group relative overflow-hidden aspect-[4/5] lg:aspect-[3/4] flex flex-col justify-end bg-[var(--royal-deep)]"
             >
-              <div className="col-span-2 md:col-span-1">
-                <div className="font-display text-2xl text-[var(--gold)]">0{i + 1}</div>
+              <div className="absolute inset-0 z-0">
+                <img src={p.img} alt={p.t} className="h-full w-full object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/95 via-[var(--royal-deep)]/40 to-transparent transition-opacity duration-700" />
               </div>
-              <div className="col-span-10 md:col-span-5">
-                <h3 className="font-display text-3xl text-[var(--royal-deep)] md:text-4xl">{p.t}</h3>
-                <div className="mt-4 h-px w-12 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+              
+              <div className="relative z-10 p-8 lg:p-10 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:translate-y-8 group-hover:translate-y-0">
+                <div className="font-display text-xl text-[var(--gold)] mb-4">0{i + 1}</div>
+                <h3 className="font-display text-3xl lg:text-4xl text-white mb-6 leading-tight">{p.t}</h3>
+                
+                {/* Expandable content */}
+                <div className="grid grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                  <div className="overflow-hidden">
+                    <div className="h-px w-full lg:w-0 bg-[var(--gold)] mb-6 transition-all duration-700 delay-100 lg:group-hover:w-full opacity-100" />
+                    <p className="text-white/80 font-light leading-relaxed pb-2 lg:opacity-0 transition-opacity duration-700 delay-200 lg:group-hover:opacity-100">
+                      {p.d}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <p className="col-span-12 max-w-md text-base font-light leading-[1.8] text-[var(--charcoal)]/70 md:col-span-6">{p.d}</p>
             </motion.div>
           ))}
         </div>
@@ -1273,3 +1283,5 @@ function Footer() {
     </footer>
   );
 }
+
+
