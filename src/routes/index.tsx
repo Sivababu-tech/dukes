@@ -1243,7 +1243,7 @@ function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <img src={logoImg} alt="Dukes Realty" className="h-12 w-auto brightness-0 invert" />
+            <img src={logoImg} alt="Dukes Realty" className="h-20 w-auto" />
             <p className="mt-4 max-w-sm text-sm font-light text-white/60">Building timeless spaces for modern living since 1988.</p>
             <div className="mt-8 flex gap-5 text-white/40">
               <a href="#" className="transition-colors hover:text-[var(--gold)]"><Linkedin size={20} strokeWidth={1.5} /></a>
