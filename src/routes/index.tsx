@@ -16,12 +16,35 @@ import delightImg from "@/assets/delight-interior.jpg";
 import futureImg from "@/assets/future-city.jpg";
 import leader1 from "@/assets/leader-1.jpg";
 import leader2 from "@/assets/leader-2.jpg";
-import leader3 from "@/assets/leader-3.jpg";
+import leader3 from "@/assets/pahal-singhania.jpeg";
 import leader4 from "@/assets/leader-4.jpg";
 import logoImg from "@/assets/Dukes-Logo.png";
 import phil1Img from "@/assets/phil-1.png";
 import phil2Img from "@/assets/phil-2.png";
 import phil3Img from "@/assets/phil-3.png";
+import dukesAvenueImg from "@/assets/dukes-avenue.jpg";
+import neighbourhoodImg from "@/assets/neighbourhood.jpg";
+import rameshImg from "@/assets/ramesh-agarwal.png";
+import ravinderImg from "@/assets/ravinder-agarwal.png";
+import dhruvImg from "@/assets/dhruv-singhania.png";
+import ammaImg from "@/assets/amma.jpg";
+import neighbourhoodNewImg from "@/assets/neighbourhood-new.jpg";
+import dukesAvenueNewImg from "@/assets/dukes-avenue-new.jpg";
+import allianceBayImg from "@/assets/alliance-bay.jpg";
+import legendKanakImg from "@/assets/legend-kanak.jpg";
+import dukesGalaxyImg from "@/assets/dukes-galaxy.jpg";
+import rajnishAgarwalImg from "@/assets/rajnish-agarwal.jpg";
+import rpBusinessParkImg from "@/assets/rp-business-park.jpg";
+import palmCountyImg from "@/assets/palm-county.jpg";
+import ohanaImg from "@/assets/ohana.jpg";
+import dukesMallImg from "@/assets/dukes-mall.jpg";
+import dukesVistasImg from "@/assets/dukes-vistas.jpg";
+import dukesCountyImg from "@/assets/dukes-county.jpg";
+import dukesRoyalVistasImg from "@/assets/dukes-royal-vistas.jpg";
+import stellarImg from "@/assets/stellar.jpg";
+import westernCountyImg from "@/assets/western-county.jpg";
+import ashishAgarwalImg from "@/assets/ashish-agarwal.jpeg";
+import samarthAgarwalImg from "@/assets/samarth-agarwal.png";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -47,7 +70,6 @@ function Index() {
       <Legacy />
       <Scale />
       <Philosophy />
-      <SubsidiaryMarquee />
       <Values />
       <Clientele />
       <Journey />
@@ -55,7 +77,6 @@ function Index() {
       <DesignDisciplineDelight />
       <Difference />
       <Portfolio />
-      <Subsidiaries />
       <Leadership />
       <FutureVision />
       <Contact />
@@ -211,14 +232,11 @@ function Legacy() {
         <div className="lg:col-span-6 lg:col-start-7 my-auto">
           <Reveal delay={0.2}>
             <p className="text-lg font-light leading-[1.8] text-[var(--charcoal)]/80">
-              Since 1988, the Dukes Group has built a reputation on enduring craftsmanship and disciplined growth. From a heritage in fast-moving consumer goods across more than 120 countries, the group brings a global perspective to a deeply local craft — building places people are proud to call their own.
+              Founded in 1982, the Dukes Group has grown into one of India's top manufacturing companies, renowned for excellence in biscuits and confectionery across more than 120 countries. Backed by 17 state-of-the-art manufacturing facilities, decades of operational rigour, and an uncompromising culture of financial discipline, the Group built a global reputation for quality, consistency, and scale. In 2005, this legacy of manufacturing excellence was channelled into a new frontier — real estate — building places people are truly proud to call their own.
             </p>
           </Reveal>
           <Reveal delay={0.4}>
             <div className="mt-12 gold-divider" />
-          </Reveal>
-          <Reveal delay={0.5}>
-            <Timeline />
           </Reveal>
         </div>
       </div>
@@ -270,7 +288,7 @@ function Scale() {
     { n: 120, suffix: "+", label: "Countries served" },
     { n: 17, suffix: "", label: "Manufacturing facilities" },
     { n: 500, suffix: "+", label: "Acres developed" },
-    { n: 1, suffix: "M+ sq ft", label: "Delivered space" },
+    { n: 2, suffix: "M+ SQ FT", label: "Delivered space", desc: "Commercial, Residential and Warehouse" },
     { n: 50, suffix: "+", label: "Commercial clients" },
   ];
   return (
@@ -303,6 +321,7 @@ function Scale() {
                 <Counter to={s.n} suffix={s.suffix} />
               </div>
               <div className="mt-6 text-xs uppercase tracking-[0.22em] text-white/60">{s.label}</div>
+              {s.desc && <div className="mt-2 text-[10px] uppercase tracking-[0.1em] text-[var(--gold)]/80">{s.desc}</div>}
             </motion.div>
           ))}
         </div>
@@ -363,11 +382,11 @@ function Philosophy() {
                 <img src={p.img} alt={p.t} className="h-full w-full object-cover transition-transform duration-[2000ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 opacity-80 group-hover:opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/95 via-[var(--royal-deep)]/40 to-transparent transition-opacity duration-700" />
               </div>
-              
+
               <div className="relative z-10 p-8 lg:p-10 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] lg:translate-y-8 group-hover:translate-y-0">
                 <div className="font-display text-xl text-[var(--gold)] mb-4">0{i + 1}</div>
                 <h3 className="font-display text-3xl lg:text-4xl text-white mb-6 leading-tight">{p.t}</h3>
-                
+
                 {/* Expandable content */}
                 <div className="grid grid-rows-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                   <div className="overflow-hidden">
@@ -413,13 +432,42 @@ function Values() {
   return (
     <section className="relative overflow-hidden bg-[var(--royal-deep)] py-32 text-white lg:py-44">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
-        <div className="mb-20">
-          <Reveal>
-            <div className="eyebrow mb-8 text-[var(--gold)]">— Core Philosophy</div>
-          </Reveal>
-          {/* <h2 className="font-display text-[clamp(3rem,9vw,9rem)] leading-[0.9] tracking-[0.05em] text-white">
-            <RevealLines text="A M M A" />
-          </h2> */}
+        <div className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <div className="eyebrow mb-8 text-[var(--gold)]">— Core Philosophy</div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <h2 className="font-display text-[clamp(2rem,4vw,4rem)] leading-[1.05] text-white mb-6">
+                Inspired by <span className="italic text-[var(--gold)]">AMMA</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <p className="text-base font-light leading-[1.85] text-white/65 max-w-lg">
+                Everything we build is guided by the values she embodied — discipline, care, and an unwavering commitment to quality. AMMA is not just our inspiration; she is the soul of every space we create.
+              </p>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-4 lg:col-start-9">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2 }}
+              className="relative aspect-[3/4] overflow-hidden border border-[var(--gold)]/30"
+            >
+              <div className="absolute inset-0">
+                <img src={ammaImg} alt="AMMA - Our Inspiration" className="h-full w-full object-cover transition-transform duration-[2000ms] group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/80 via-transparent to-transparent" />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 flex flex-col items-center justify-end p-6 z-10">
+                <div className="font-display text-[var(--gold)] text-lg tracking-[0.3em] mb-2">AMMA</div>
+                <div className="h-px w-16 bg-[var(--gold)]/40 mb-2" />
+                <div className="text-[10px] text-white/60 tracking-[0.2em] uppercase">Our Inspiration</div>
+              </div>
+              <div className="absolute inset-0 border border-[var(--gold)]/20 z-20" />
+            </motion.div>
+          </div>
         </div>
         <div className="grid grid-cols-1 gap-px bg-white/10 md:grid-cols-2 lg:grid-cols-4">
           {cards.map((c, i) => (
@@ -451,12 +499,12 @@ function Values() {
 /* ───────────────────────── JOURNEY ───────────────────────── */
 function Journey() {
   const milestones = [
-    { y: "1988", t: "Group Founded", d: "The Dukes Group is established with a vision to build enduring enterprises." },
-    { y: "1996", t: "Global Expansion", d: "Operations expand across 40+ countries worldwide." },
-    { y: "2008", t: "Manufacturing Scale", d: "17 state-of-the-art facilities operational globally." },
-    { y: "2014", t: "Realty Division", d: "Real estate arm launched with decades of discipline." },
-    { y: "2019", t: "Plotted Communities", d: "Master-planned developments across micro-markets." },
-    { y: "2024", t: "Pan-Format Developer", d: "Fully integrated luxury developer across all verticals." },
+    { y: "1982", t: "Group Founded", d: "The Dukes Group is established, laying the foundation for a legacy built on manufacturing excellence and financial discipline." },
+    { y: "1995", t: "Dukes Was Born", d: "The iconic Dukes brand is launched, marking the beginning of India's most trusted biscuit and confectionery story." },
+    { y: "2000", t: "Global Expansion", d: "Operations expand to 120+ countries, cementing Dukes as a truly global FMCG powerhouse with world-class standards." },
+    { y: "2005", t: "Realty Division", d: "Decades of operational discipline are channelled into real estate as the Dukes Realty division is born." },
+    { y: "2013", t: "Pan-Format Development", d: "Expanding across residential, commercial, and plotted formats — Dukes becomes a fully integrated developer." },
+    { y: "2026", t: "First High-Rise", d: "Dukes Realty reaches new heights with its first premium high-rise development, redefining the city skyline." },
   ];
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -767,26 +815,35 @@ type Project = { name: string; loc: string; cat: string; img: string };
 function Portfolio() {
   const all: Record<string, Project[]> = {
     Residential: [
-      { name: "Dukes Sovereign", loc: "Mumbai", cat: "Residential Tower", img: villaImg },
-      { name: "Crown Heights", loc: "Bengaluru", cat: "Sky Residences", img: delightImg },
+      { name: "Dukes Galaxy", loc: "Hyderabad", cat: "Luxury Residences", img: dukesGalaxyImg },
+      { name: "Stellar", loc: "Hyderabad", cat: "Premium Apartments", img: stellarImg },
+      { name: "East Winds", loc: "Banjara Hills", cat: "Residential Apartment", img: rajnishAgarwalImg },
+      { name: "Dukes Legend Kanak", loc: "Hyderabad", cat: "Premium Apartments", img: legendKanakImg },
     ],
     Commercial: [
-      { name: "Dukes Atrium", loc: "Hyderabad", cat: "Grade-A Workplace", img: commercialImg },
-      { name: "Meridian One", loc: "Pune", cat: "Corporate Campus", img: heroImg },
+      { name: "Dukes Avenue", loc: "Hyderabad", cat: "Grade-A Commercial", img: dukesAvenueNewImg },
+      { name: "Dhandoo Mall", loc: "Hyderabad", cat: "Premium Retail Mall", img: dukesMallImg },
+      { name: "Alliance Bay", loc: "Hyderabad", cat: "Retail & Commercial", img: allianceBayImg },
+      { name: "R.P. Business Park", loc: "Hyderabad", cat: "Commercial Spaces", img: rpBusinessParkImg },
     ],
-    Plotted: [
-      { name: "Dukes Reserve", loc: "Coimbatore", cat: "Master-Planned", img: plottedImg },
-      { name: "Estuary Estates", loc: "Goa", cat: "Coastal Plots", img: villaImg },
+    "Upcoming Projects": [
+      { name: "Neev", loc: "Hyderabad", cat: "Upcoming Commercial/Residential", img: futureImg },
+      { name: "DDB", loc: "Hyderabad", cat: "Upcoming Premium Commercial", img: commercialImg },
+      { name: "Dulapally", loc: "Hyderabad", cat: "Upcoming Luxury Community", img: villaImg },
     ],
-    Ongoing: [
-      { name: "The Vault", loc: "Mumbai", cat: "In Construction", img: commercialImg },
-    ],
-    Upcoming: [
-      { name: "Skyline 27", loc: "Delhi NCR", cat: "Launching 2026", img: futureImg },
+    "Plotted Developments": [
+      { name: "Aero space", loc: "Hyderabad", cat: "Plotted Development", img: neighbourhoodNewImg },
+      { name: "Aero space county", loc: "Hyderabad", cat: "Luxury Gated Community", img: dukesCountyImg },
+      { name: "Dukes Vistas", loc: "Hyderabad", cat: "Premium Plotted Community", img: dukesVistasImg },
+      { name: "SLNS Hills - Bhongir", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
+      { name: "Western County - Shankarpalli Singapuram", loc: "Shankarpalli", cat: "Luxury Gated Community", img: westernCountyImg },
+      { name: "Palm County", loc: "Hyderabad", cat: "Plotted Development", img: palmCountyImg },
+      { name: "Ohana", loc: "Hyderabad", cat: "Plotted Development", img: ohanaImg },
     ],
   };
   const tabs = Object.keys(all);
   const [active, setActive] = useState(tabs[0]);
+  const [showAll, setShowAll] = useState(false);
   return (
     <section id="portfolio" className="relative overflow-hidden bg-white py-20 lg:py-44">
       <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
@@ -804,7 +861,10 @@ function Portfolio() {
                 {tabs.map((t) => (
                   <button
                     key={t}
-                    onClick={() => setActive(t)}
+                    onClick={() => {
+                      setActive(t);
+                      setShowAll(false);
+                    }}
                     className={`relative cursor-pointer px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-colors lg:px-6 lg:text-[11px] lg:tracking-[0.22em] ${active === t ? "text-[var(--royal-deep)]" : "text-[var(--charcoal)]/50 hover:text-[var(--royal-deep)]"
                       }`}
                   >
@@ -828,10 +888,31 @@ function Portfolio() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-1 gap-8 md:grid-cols-2"
         >
-          {all[active].map((p) => (
+          {(showAll ? all[active] : all[active].slice(0, 2)).map((p) => (
             <ProjectCard key={p.name} p={p} />
           ))}
         </motion.div>
+        {all[active].length > 2 && (
+          <motion.div
+            key={`${active}-cta`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="mt-10 flex justify-center"
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="group cursor-pointer inline-flex items-center gap-4 border border-[var(--charcoal)]/20 px-8 py-4 text-[11px] uppercase tracking-[0.28em] text-[var(--charcoal)] transition-all hover:border-[var(--gold)] hover:text-[var(--gold)] bg-transparent"
+            >
+              {showAll ? `View Less ${active}` : `View All ${active}`}
+              <ArrowRight
+                size={14}
+                className={`transition-transform duration-300 ${showAll ? "-rotate-90" : "group-hover:translate-x-1"
+                  }`}
+              />
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
@@ -977,11 +1058,19 @@ function Subsidiaries() {
 
 /* ───────────────────────── LEADERSHIP ───────────────────────── */
 function Leadership() {
-  const people = [
-    { n: "Kedarnath Agarwal", r: "Chairman", q: "We do not chase trends. We outlast them.", i: leader1 },
-    { n: "Ramesh Agarwal", r: "Managing Director", q: "Discipline is the most underrated luxury.", i: leader2 },
-    { n: "Rajender Kumar Agarwal", r: "Director", q: "A building should age into its own beauty.", i: leader3 },
-    { n: "Ravinder Agarwal", r: "Director", q: "Engineering is the silent foundation of art.", i: leader4 },
+  const rows = [
+    [
+      { n: "Ramesh Agarwal", r: "CMD", i: rameshImg },
+      { n: "Ravinder Agarwal", r: "MD", i: ravinderImg },
+    ],
+    [
+      { n: "Ashish Agarwal", r: "Director", i: ashishAgarwalImg },
+      { n: "Samarth Agarwal", r: "Director", i: samarthAgarwalImg },
+    ],
+    [
+      { n: "Pahal Singhania", r: "Director", i: leader3 },
+      { n: "Dhruv Singhania", r: "Director", i: dhruvImg },
+    ],
   ];
   return (
     <section id="leadership" className="relative overflow-hidden py-32 lg:py-44" style={{ backgroundColor: '#f9f6f1' }}>
@@ -990,36 +1079,37 @@ function Leadership() {
           <Reveal>
             <div className="eyebrow mb-8 text-[var(--gold)]">— Leadership</div>
           </Reveal>
-          {/* <h2 className="font-display text-[clamp(2.25rem,4.5vw,4.5rem)] leading-[1.05] text-[var(--royal-deep)]">
-            <RevealLines text="The hands" /> <span className="italic text-[var(--gold)]"><RevealLines text="behind the work." /></span>
-          </h2> */}
         </div>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {people.map((p, i) => (
-            <motion.div
-              key={`${p.n}-${i}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 1 }}
-              className="group"
-            >
-              <div className="relative aspect-[3/4] overflow-hidden bg-[var(--royal-deep)]">
-                <img
-                  src={p.i}
-                  alt={p.n}
-                  className="h-full w-full object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
-                />
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span className="font-display text-[10rem] text-white/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100">{p.n.split(" ").map((s) => s[0]).join("")}</span>
-                </div>
-              </div>
-              <div className="mt-6">
-                <div className="font-display text-2xl text-[var(--royal-deep)]">{p.n}</div>
-                <div className="mt-2 text-xs uppercase tracking-[0.2em] text-[var(--charcoal)]/60">{p.r}</div>
-                <div className="mt-4 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-20" />
-              </div>
-            </motion.div>
+        <div className="space-y-16">
+          {rows.map((row, rowIdx) => (
+            <div key={rowIdx} className="grid grid-cols-1 gap-8 sm:grid-cols-2 max-w-3xl mx-auto">
+              {row.map((p, i) => (
+                <motion.div
+                  key={`${p.n}-${rowIdx}-${i}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12, duration: 1 }}
+                  className="group"
+                >
+                  <div className="relative aspect-[3/4] overflow-hidden bg-[var(--royal-deep)]">
+                    <img
+                      src={p.i}
+                      alt={p.n}
+                      className="h-full w-full object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <span className="font-display text-[10rem] text-white/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100">{p.n.split(" ").map((s) => s[0]).join("")}</span>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <div className="font-display text-2xl text-[var(--royal-deep)]">{p.n}</div>
+                    <div className="mt-2 text-xs uppercase tracking-[0.2em] text-[var(--charcoal)]/60">{p.r}</div>
+                    <div className="mt-4 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-20" />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -1126,9 +1216,9 @@ function Contact() {
           </Reveal>
           <div className="mt-16 space-y-8">
             {[
-              { l: "Headquarters", v: "Dukes House, Bandra Kurla Complex, Mumbai 400051" },
-              { l: "Email", v: "investments@dukesrealty.com" },
-              { l: "Telephone", v: "+91 22 0000 0000" },
+              { l: "Dukes Realty ", v: <>406, 4th floor, R.P. Business Park, Shaikpet, Hyderabad,<br /> 500104, Telangana, India.</> },
+              { l: "Email", v: "info@dukesrealty.in" },
+              { l: "Telephone", v: "+91 40 4850 0000" },
             ].map((c, i) => (
               <motion.div
                 key={c.l}
@@ -1244,7 +1334,7 @@ function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <img src={logoImg} alt="Dukes Realty" className="h-20 w-auto" />
-            <p className="mt-4 max-w-sm text-sm font-light text-white/60">Building timeless spaces for modern living since 1988.</p>
+            <p className="mt-4 max-w-sm text-sm font-light text-white/60">Building timeless spaces for modern living since 2005.</p>
             <div className="mt-8 flex gap-5 text-white/40">
               <a href="#" className="transition-colors hover:text-[var(--gold)]"><Linkedin size={20} strokeWidth={1.5} /></a>
               <a href="#" className="transition-colors hover:text-[var(--gold)]"><Instagram size={20} strokeWidth={1.5} /></a>
