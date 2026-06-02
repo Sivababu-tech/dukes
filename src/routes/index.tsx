@@ -37,7 +37,7 @@ import rajnishAgarwalImg from "@/assets/rajnish-agarwal.jpg";
 import rpBusinessParkImg from "@/assets/rp-business-park.jpg";
 import palmCountyImg from "@/assets/palm-county.jpg";
 import ohanaImg from "@/assets/ohana.jpg";
-import dukesMallImg from "@/assets/dukes-mall.jpg";
+
 import dukesVistasImg from "@/assets/dukes-vistas.jpg";
 import dukesCountyImg from "@/assets/dukes-county.jpg";
 import dukesRoyalVistasImg from "@/assets/dukes-royal-vistas.jpg";
@@ -47,6 +47,9 @@ import ashishAgarwalImg from "@/assets/ashish-agarwal.jpeg";
 import samarthAgarwalImg from "@/assets/samarth-agarwal.png";
 import { useState } from "react";
 import { toast } from "sonner";
+import emailjs from '@emailjs/browser';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -822,15 +825,12 @@ function Portfolio() {
     ],
     Commercial: [
       { name: "Dukes Avenue", loc: "Hyderabad", cat: "Grade-A Commercial", img: dukesAvenueNewImg },
-      { name: "Dhandoo Mall", loc: "Hyderabad", cat: "Premium Retail Mall", img: dukesMallImg },
+
       { name: "Alliance Bay", loc: "Hyderabad", cat: "Retail & Commercial", img: allianceBayImg },
       { name: "R.P. Business Park", loc: "Hyderabad", cat: "Commercial Spaces", img: rpBusinessParkImg },
     ],
-    "Upcoming Projects": [
-      { name: "Neev", loc: "Hyderabad", cat: "Upcoming Commercial/Residential", img: futureImg },
-      { name: "DDB", loc: "Hyderabad", cat: "Upcoming Premium Commercial", img: commercialImg },
-      { name: "Dulapally", loc: "Hyderabad", cat: "Upcoming Luxury Community", img: villaImg },
-    ],
+
+
     "Plotted Developments": [
       { name: "Aero space", loc: "Hyderabad", cat: "Plotted Development", img: neighbourhoodNewImg },
       { name: "Aero space county", loc: "Hyderabad", cat: "Luxury Gated Community", img: dukesCountyImg },
@@ -1197,6 +1197,8 @@ function FutureVision() {
 
 /* ───────────────────────── CONTACT ───────────────────────── */
 function Contact() {
+  const [isSending, setIsSending] = useState(false);
+  const [phone, setPhone] = useState<string | undefined>("");
   return (
     <section id="contact" className="relative overflow-hidden bg-[var(--royal-deep)] py-32 text-white lg:py-44">
       <FloatingGradient />
@@ -1217,8 +1219,8 @@ function Contact() {
           <div className="mt-16 space-y-8">
             {[
               { l: "Dukes Realty ", v: <>406, 4th floor, R.P. Business Park, Shaikpet, Hyderabad,<br /> 500104, Telangana, India.</> },
-              { l: "Email", v: "info@dukesrealty.in" },
-              { l: "Telephone", v: "+91 40 4850 0000" },
+              { l: "Email", v: "info@dukesindia.com", href: "mailto:info@dukesindia.com" },
+              { l: "Telephone", v: "7893846784", href: "tel:+917893846784" },
             ].map((c, i) => (
               <motion.div
                 key={c.l}
@@ -1228,7 +1230,13 @@ function Contact() {
                 transition={{ delay: i * 0.1, duration: 0.9 }}
               >
                 <div className="eyebrow text-[var(--gold)]">{c.l}</div>
-                <div className="mt-2 font-display text-xl text-white">{c.v}</div>
+                <div className="mt-2 font-display text-xl text-white">
+                  {c.href ? (
+                    <a href={c.href} className="hover:text-[var(--gold)] transition-colors">{c.v}</a>
+                  ) : (
+                    c.v
+                  )}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -1240,10 +1248,49 @@ function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2 }}
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              toast.success("Inquiry sent successfully. Our team will contact you soon.");
-              (e.target as HTMLFormElement).reset();
+
+              if (!phone || !isValidPhoneNumber(phone)) {
+                toast.error("Please enter a valid international telephone number.");
+                return;
+              }
+
+              const form = e.target as HTMLFormElement;
+              const formData = new FormData(form);
+
+              const full_name = formData.get("full_name") as string;
+              const email = formData.get("email") as string;
+              const telephone = phone;
+              const message = formData.get("message") as string;
+
+              const templateParams = {
+                full_name,
+                email,
+                telephone,
+                message,
+                date: new Date().toLocaleString()
+              };
+
+              setIsSending(true);
+
+              try {
+                const response = await emailjs.send(
+                  "service_p7e3qh5",
+                  "template_5j65da9",
+                  templateParams,
+                  "wjWVr2qb61ZzUxxUu"
+                );
+                console.log("Email sent successfully", response);
+                toast.success("Inquiry sent successfully. Our team will contact you soon.");
+                form.reset();
+                setPhone("");
+              } catch (error) {
+                console.error("Failed to send email", error);
+                toast.error("Failed to send inquiry. Please try again.");
+              } finally {
+                setIsSending(false);
+              }
             }}
             className="glass relative p-8 lg:p-10"
           >
@@ -1254,6 +1301,7 @@ function Contact() {
                   <div className="eyebrow mb-2 text-white/50">Full name</div>
                   <input
                     type="text"
+                    name="full_name"
                     required
                     placeholder="Enter full name"
                     className="w-full border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
@@ -1263,6 +1311,7 @@ function Contact() {
                   <div className="eyebrow mb-2 text-white/50">Email address</div>
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="Enter email address"
                     className="w-full border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
@@ -1270,26 +1319,55 @@ function Contact() {
                 </label>
                 <label className="block">
                   <div className="eyebrow mb-2 text-white/50">Telephone</div>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="Enter telephone"
-                    className="w-full border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
-                  />
+                  <div className="phone-input-wrapper w-full border-b border-white/30 transition-colors focus-within:border-[var(--gold)] pb-1">
+                    <PhoneInput
+                      international
+                      countryCallingCodeEditable={false}
+                      defaultCountry="IN"
+                      value={phone}
+                      onChange={setPhone}
+                      placeholder="Enter telephone"
+                      className="bg-transparent text-white outline-none placeholder:text-white/20 text-base py-2"
+                      required
+                    />
+                  </div>
+                  <style>{`
+                    .phone-input-wrapper .PhoneInputInput {
+                      background: transparent;
+                      border: none;
+                      outline: none;
+                      color: white;
+                      font-size: 1rem;
+                      padding-left: 0.5rem;
+                    }
+                    .phone-input-wrapper .PhoneInputCountrySelect {
+                      background: #04073d;
+                      color: white;
+                    }
+                    .phone-input-wrapper .PhoneInputCountrySelect option {
+                      background: #04073d;
+                      color: white;
+                      max-height: 200px;
+                    }
+                    .phone-input-wrapper .PhoneInputCountrySelectArrow {
+                      opacity: 0.7;
+                    }
+                  `}</style>
                 </label>
                 <label className="block">
                   <div className="eyebrow mb-2 text-white/50">Message</div>
                   <textarea
                     rows={3}
+                    name="message"
                     required
                     placeholder="How can we help you?"
                     className="w-full resize-none border-b border-white/30 bg-transparent py-3 text-white outline-none transition-colors focus:border-[var(--gold)] placeholder:text-white/20 text-base"
                   />
                 </label>
               </div>
-              <button type="submit" className="group cursor-pointer inline-flex w-full items-center justify-between border border-[var(--gold)] bg-[var(--gold)] px-8 py-5 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:bg-transparent hover:text-[var(--gold)]">
-                Send inquiry
-                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+              <button type="submit" disabled={isSending} className="group cursor-pointer inline-flex w-full items-center justify-between border border-[var(--gold)] bg-[var(--gold)] px-8 py-5 text-[11px] uppercase tracking-[0.28em] text-[var(--royal-deep)] transition-all hover:bg-transparent hover:text-[var(--gold)] disabled:opacity-50 disabled:cursor-not-allowed">
+                {isSending ? "Sending..." : "Send inquiry"}
+                {!isSending && <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />}
               </button>
             </div>
           </motion.form>
