@@ -112,7 +112,7 @@ function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="eyebrow mb-4 lg:mb-8 flex items-center gap-4 text-[var(--gold)] text-[9px] lg:text-[10px]"
+          className="eyebrow mb-4 lg:mb-8 flex items-center gap-4 text-[var(--gold)] text-[15px] lg:text-[15px]"
         >
           <span className="h-px w-10 lg:w-12 bg-[var(--gold)]" />
           Design. Discipline. Delight.
@@ -235,7 +235,7 @@ function Legacy() {
         <div className="lg:col-span-6 lg:col-start-7 my-auto">
           <Reveal delay={0.2}>
             <p className="text-lg font-light leading-[1.8] text-[var(--charcoal)]/80">
-              Founded in 1982, the Dukes Group has grown into one of India's top manufacturing companies, renowned for excellence in biscuits and confectionery across more than 120 countries. Backed by 17 state-of-the-art manufacturing facilities, decades of operational rigour, and an uncompromising culture of financial discipline, the Group built a global reputation for quality, consistency, and scale. In 2005, this legacy of manufacturing excellence was channelled into a new frontier — real estate — building places people are truly proud to call their own.
+              Founded in 1982, the Dukes Group has grown into one of India's top manufacturing companies, renowned for excellence in biscuits and confectionery across more than 120 countries. Backed by 17 state-of-the-art manufacturing facilities, decades of operational rigour, and an uncompromising culture of financial discipline, the Group built a global reputation for quality, consistency, and scale.<br></br> In 2005, this legacy of manufacturing excellence was channelled into a new frontier real estate building places people are truly proud to call their own.
             </p>
           </Reveal>
           <Reveal delay={0.4}>
@@ -941,7 +941,7 @@ function ProjectCard({ p }: { p: Project }) {
           </div>
           <div className="translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
             <span className="inline-flex items-center gap-2 border border-[var(--gold)] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-[var(--gold)]">
-              View
+              Contact us
               <ArrowRight size={12} />
             </span>
           </div>
@@ -1230,7 +1230,7 @@ function Contact() {
                 transition={{ delay: i * 0.1, duration: 0.9 }}
               >
                 <div className="eyebrow text-[var(--gold)]">{c.l}</div>
-                <div className="mt-2 font-display text-xl text-white">
+                <div className="mt-2 text-base font-light leading-[1.85] text-white/70">
                   {c.href ? (
                     <a href={c.href} className="hover:text-[var(--gold)] transition-colors">{c.v}</a>
                   ) : (
@@ -1421,17 +1421,31 @@ function Footer() {
             </div>
           </div>
           {[
-            { t: "Explore", l: ["Legacy", "Portfolio", "Leadership", "Contact"] },
-            { t: "Connect", l: ["Blogs", "News & Media"] },
+            { 
+              t: "Explore", 
+              links: [
+                { name: "Legacy", href: "#legacy" }, 
+                { name: "Portfolio", href: "#portfolio" }, 
+                { name: "Leadership", href: "#leadership" }, 
+                { name: "Contact", href: "#contact" }
+              ] 
+            },
+            { 
+              t: "Connect", 
+              links: [
+                { name: "Blogs", href: "#" }, 
+                { name: "News & Media", href: "#" }
+              ] 
+            },
           ].map((col) => (
-            <div key={col.t}>
+            <div key={col.t} className="text-center md:text-left">
               <div className="eyebrow mb-6 text-[var(--gold)]">{col.t}</div>
-              <ul className="space-y-3">
-                {col.l.map((it) => (
-                  <li key={it}>
-                    <a href="#" className="group inline-flex items-center text-sm text-white/70 transition-colors hover:text-[var(--gold)]">
-                      <ArrowRight size={12} className="mr-2 h-0 w-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:h-3 group-hover:w-3 group-hover:opacity-100" />
-                      {it}
+              <ul className="space-y-4 md:space-y-3">
+                {col.links.map((it) => (
+                  <li key={it.name}>
+                    <a href={it.href} className="group inline-flex items-center text-lg md:text-sm text-white/70 transition-colors hover:text-[var(--gold)]">
+                      <ArrowRight size={12} className="hidden md:block mr-2 h-0 w-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:h-3 group-hover:w-3 group-hover:opacity-100" />
+                      {it.name}
                     </a>
                   </li>
                 ))}

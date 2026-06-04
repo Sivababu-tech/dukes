@@ -47,7 +47,7 @@ export function Nav() {
               <img
                 src={logoImg}
                 alt="Dukes Realty"
-                className="h-10 md:h-12 lg:h-14 xl:h-16 w-auto transition-all duration-500"
+                className="h-14 md:h-14 lg:h-14 xl:h-16 w-auto transition-all duration-500"
               />
             </a>
           </div>
@@ -75,7 +75,7 @@ export function Nav() {
                 : "border-white/20 text-white hover:border-[var(--gold)] hover:text-[var(--gold)]"
                 }`}
             >
-              Schedule
+              Get in Touch
               <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
@@ -113,7 +113,7 @@ export function Nav() {
               <div className="flex flex-col h-full">
                 <div className="mb-12 flex items-center justify-between">
                   <div className="flex items-center">
-                    <img src={logoImg} alt="Dukes Realty" className="h-12 w-auto" />
+                    <img src={logoImg} alt="Dukes Realty" className="h-14 w-auto" />
                   </div>
                   <button
                     onClick={() => setIsOpen(false)}
