@@ -107,7 +107,7 @@ function Hero() {
       {/* floating gold particles */}
       <Particles />
 
-      <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-6 pt-24 lg:pt-32 lg:px-12">
+      <motion.div style={{ opacity }} className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-center px-6 pt-24 pb-32 lg:pt-32 lg:pb-0 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
