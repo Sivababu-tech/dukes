@@ -19,14 +19,7 @@ export function Counter({ to, suffix = "", duration = 2000 }: { to: number; suff
     return () => cancelAnimationFrame(raf);
   }, [inView, to, duration]);
   const renderNumber = (num: number) => {
-    const str = num.toLocaleString();
-    return str.split("").map((c, i) => (
-      c === "1" ? (
-        <span key={i} className="inline-block translate-y-[0.05em] leading-none scale-x-[0.75] origin-center" style={{ fontFamily: "Georgia, serif", fontSize: "0.86em", fontWeight: 300 }}>
-          {c}
-        </span>
-      ) : c
-    ));
+    return num.toLocaleString();
   };
 
   return (
