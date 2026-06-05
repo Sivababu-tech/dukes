@@ -72,14 +72,14 @@ function Index() {
       <Hero />
       <Legacy />
       <Scale />
+      <Portfolio />
+      <Journey />
+      <Clientele />
       <Philosophy />
       <Values />
-      <Clientele />
-      <Journey />
       <FmcgToRealty />
       <DesignDisciplineDelight />
       <Difference />
-      <Portfolio />
       <Leadership />
       <FutureVision />
       <Contact />
@@ -1421,21 +1421,21 @@ function Footer() {
             </div>
           </div>
           {[
-            { 
-              t: "Explore", 
+            {
+              t: "Explore",
               links: [
-                { name: "Legacy", href: "#legacy" }, 
-                { name: "Portfolio", href: "#portfolio" }, 
-                { name: "Leadership", href: "#leadership" }, 
+                { name: "Legacy", href: "#legacy" },
+                { name: "Portfolio", href: "#portfolio" },
+                { name: "Leadership", href: "#leadership" },
                 { name: "Contact", href: "#contact" }
-              ] 
+              ]
             },
-            { 
-              t: "Connect", 
+            {
+              t: "Connect",
               links: [
-                { name: "Blogs", href: "#" }, 
+                { name: "Blogs", href: "#" },
                 { name: "News & Media", href: "#" }
-              ] 
+              ]
             },
           ].map((col) => (
             <div key={col.t} className="text-center md:text-left">
