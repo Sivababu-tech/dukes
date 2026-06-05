@@ -5,8 +5,8 @@ import logoImg from "@/assets/Dukes-Logo.png";
 
 const links = [
   { href: "#legacy", label: "About Us" },
-  { href: "#philosophy", label: "Philosophy" },
   { href: "#portfolio", label: "Portfolio" },
+  { href: "#philosophy", label: "Philosophy" },
   { href: "#leadership", label: "Leadership" },
   { href: "#contact", label: "Contact" },
 ];
