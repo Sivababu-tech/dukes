@@ -34,7 +34,7 @@ import allianceBayImg from "@/assets/alliance-bay.jpg";
 import legendKanakImg from "@/assets/legend-kanak.jpg";
 import dukesGalaxyImg from "@/assets/dukes-galaxy.jpg";
 import rajnishAgarwalImg from "@/assets/rajnish-agarwal.jpg";
-import rpBusinessParkImg from "@/assets/rp-business-park.jpg";
+import rpBusinessParkImg from "@/assets/rp-business-park.png";
 import palmCountyImg from "@/assets/palm-county.jpg";
 import ohanaImg from "@/assets/ohana.jpg";
 
@@ -819,7 +819,7 @@ function Portfolio() {
   const all: Record<string, Project[]> = {
     Residential: [
       { name: "Dukes Galaxy", loc: "Hyderabad", cat: "Luxury Residences", img: dukesGalaxyImg },
-      { name: "Stellar", loc: "Hyderabad", cat: "Premium Apartments", img: stellarImg },
+      { name: "Dukes Legend Stellar", loc: "Hyderabad", cat: "Premium Apartments", img: stellarImg },
       { name: "East Winds", loc: "Banjara Hills", cat: "Residential Apartment", img: rajnishAgarwalImg },
       { name: "Dukes Legend Kanak", loc: "Hyderabad", cat: "Premium Apartments", img: legendKanakImg },
     ],
@@ -832,8 +832,8 @@ function Portfolio() {
 
 
     "Plotted Developments": [
-      { name: "Aero space", loc: "Hyderabad", cat: "Plotted Development", img: neighbourhoodNewImg },
       { name: "Aero space county", loc: "Hyderabad", cat: "Luxury Gated Community", img: dukesCountyImg },
+      { name: "Aero space", loc: "Hyderabad", cat: "Plotted Development", img: neighbourhoodNewImg },
       { name: "Dukes Vistas", loc: "Hyderabad", cat: "Premium Plotted Community", img: dukesVistasImg },
       { name: "SLNS Hills - Bhongir", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
       { name: "Western County - Shankarpalli Singapuram", loc: "Shankarpalli", cat: "Luxury Gated Community", img: westernCountyImg },
