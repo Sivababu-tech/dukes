@@ -49,6 +49,8 @@ import botanicaImg from "@/assets/Botanica.png";
 import atriumMallImg from "@/assets/Atrium Mall.PNG";
 import dhandooMallImg from "@/assets/Dhandoo Mall.PNG";
 import dukesLegendSujayImg from "@/assets/Dukes Legend Sujay.PNG";
+import urbanVillageImg from "@/assets/Urban Village.png";
+import dukesCountyNewImg from "@/assets/Dukes County.PNG";
 import { useState } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
@@ -841,11 +843,13 @@ function Portfolio() {
 
     "Plotted Developments": [
       { name: "Aero space county", loc: "Adibatla", cat: "Luxury Gated Community", img: dukesCountyImg },
+      { name: "Dukes County", loc: "Velimela", cat: "Plotted Development", img: dukesCountyNewImg },
       { name: "Dukes Legend Kanak", loc: "Vizag", cat: "Premium Plotted Community", img: legendKanakImg },
       { name: "SVNS Hills", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
       { name: "Western County", loc: "Shankarpalli", cat: "Luxury Gated Community", img: westernCountyImg },
       { name: "Ohana", loc: "Medchal", cat: "Plotted Development", img: ohanaImg },
       { name: "Dukes Legend Sujay", loc: "Bangalore", cat: "Plotted Development", img: dukesLegendSujayImg },
+      { name: "Urban Village", loc: "Kothur", cat: "Plotted Development", img: urbanVillageImg },
     ],
   };
   const tabs = Object.keys(all);
