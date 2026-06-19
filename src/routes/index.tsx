@@ -45,6 +45,10 @@ import stellarImg from "@/assets/stellar.jpg";
 import westernCountyImg from "@/assets/western-county.jpg";
 import ashishAgarwalImg from "@/assets/ashish-agarwal.jpeg";
 import samarthAgarwalImg from "@/assets/samarth-agarwal.png";
+import botanicaImg from "@/assets/Botanica.png";
+import atriumMallImg from "@/assets/Atrium Mall.PNG";
+import dhandooMallImg from "@/assets/Dhandoo Mall.PNG";
+import dukesLegendSujayImg from "@/assets/Dukes Legend Sujay.PNG";
 import { useState } from "react";
 import { toast } from "sonner";
 import emailjs from '@emailjs/browser';
@@ -823,22 +827,25 @@ function Portfolio() {
       { name: "East Winds", loc: "Banjara Hills", cat: "Residential Apartment", img: rajnishAgarwalImg },
       { name: "The Neighbourhood", loc: "Hyderabad", cat: "Luxury Gated Community", img: neighbourhoodNewImg },
       { name: "Anthem Vistas", loc: "Hyderabad", cat: "Premium Residential Community", img: dukesVistasImg },
+      { name: "Botanica", loc: "Goa", cat: "Residential", img: botanicaImg },
+      { name: "Palm County", loc: "Hyderabad", cat: "Residential", img: palmCountyImg },
     ],
     Commercial: [
       { name: "Dukes Avenue", loc: "Hyderabad", cat: "Grade-A Commercial", img: dukesAvenueNewImg },
-
+      { name: "Atrium Mall", loc: "Hyderabad", cat: "Retail & Commercial", img: atriumMallImg },
       { name: "Alliance Bay", loc: "Hyderabad", cat: "Retail & Commercial", img: allianceBayImg },
       { name: "R.P. Business Park", loc: "Hyderabad", cat: "Commercial Spaces", img: rpBusinessParkImg },
+      { name: "Dhandoo Mall", loc: "Hyderabad", cat: "Retail & Commercial", img: dhandooMallImg },
     ],
 
 
     "Plotted Developments": [
-      { name: "Dukes Legend Kanak", loc: "Hyderabad", cat: "Premium Plotted Community", img: legendKanakImg },
-      { name: "Aero space county", loc: "Hyderabad", cat: "Luxury Gated Community", img: dukesCountyImg },
-      { name: "SLNS Hills - Bhongir", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
-      { name: "Western County - Shankarpalli Singapuram", loc: "Shankarpalli", cat: "Luxury Gated Community", img: westernCountyImg },
-      { name: "Palm County", loc: "Hyderabad", cat: "Plotted Development", img: palmCountyImg },
-      { name: "Ohana", loc: "Hyderabad", cat: "Plotted Development", img: ohanaImg },
+      { name: "Aero space county", loc: "Adibatla", cat: "Luxury Gated Community", img: dukesCountyImg },
+      { name: "Dukes Legend Kanak", loc: "Vizag", cat: "Premium Plotted Community", img: legendKanakImg },
+      { name: "SVNS Hills", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
+      { name: "Western County", loc: "Shankarpalli", cat: "Luxury Gated Community", img: westernCountyImg },
+      { name: "Ohana", loc: "Medchal", cat: "Plotted Development", img: ohanaImg },
+      { name: "Dukes Legend Sujay", loc: "Bangalore", cat: "Plotted Development", img: dukesLegendSujayImg },
     ],
   };
   const tabs = Object.keys(all);
