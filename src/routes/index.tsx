@@ -26,7 +26,7 @@ import dukesAvenueImg from "@/assets/dukes-avenue.jpg";
 import neighbourhoodImg from "@/assets/neighbourhood.jpg";
 import rameshImg from "@/assets/ramesh-agarwal.png";
 import ravinderImg from "@/assets/ravinder-agarwal.png";
-import dhruvImg from "@/assets/dhruv-singhania.png";
+import dhruvImg from "@/assets/dhruv-singhania.jpeg";
 import ammaImg from "@/assets/amma.jpg";
 import neighbourhoodNewImg from "@/assets/neighbourhood-new.jpg";
 import dukesAvenueNewImg from "@/assets/dukes-avenue-new.jpg";
@@ -837,7 +837,6 @@ function Portfolio() {
       { name: "Atrium Mall", loc: "Hyderabad", cat: "Retail & Commercial", img: atriumMallImg },
       { name: "Alliance Bay", loc: "Hyderabad", cat: "Retail & Commercial", img: allianceBayImg },
       { name: "R.P. Business Park", loc: "Hyderabad", cat: "Commercial Spaces", img: rpBusinessParkImg },
-      { name: "Dhandoo Mall", loc: "Hyderabad", cat: "Retail & Commercial", img: dhandooMallImg },
     ],
 
 
@@ -845,7 +844,7 @@ function Portfolio() {
       { name: "Aero space county", loc: "Adibatla", cat: "Luxury Gated Community", img: dukesCountyImg },
       { name: "Dukes County", loc: "Velimela", cat: "Plotted Development", img: dukesCountyNewImg },
       { name: "Dukes Legend Kanak", loc: "Vizag", cat: "Premium Plotted Community", img: legendKanakImg },
-      { name: "SVNS Hills", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
+      { name: "SLNS Hills", loc: "Bhongir", cat: "Exclusive Villa Community", img: dukesRoyalVistasImg },
       { name: "Western County", loc: "Shankarpalli", cat: "Luxury Gated Community", img: westernCountyImg },
       { name: "Ohana", loc: "Medchal", cat: "Plotted Development", img: ohanaImg },
       { name: "Dukes Legend Sujay", loc: "Bangalore", cat: "Plotted Development", img: dukesLegendSujayImg },
@@ -1109,9 +1108,6 @@ function Leadership() {
                       alt={p.n}
                       className="h-full w-full object-cover transition-all duration-[1500ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <span className="font-display text-[10rem] text-white/5 opacity-0 transition-opacity duration-700 group-hover:opacity-100">{p.n.split(" ").map((s) => s[0]).join("")}</span>
-                    </div>
                   </div>
                   <div className="mt-6">
                     <div className="font-display text-2xl text-[var(--royal-deep)]">{p.n}</div>
