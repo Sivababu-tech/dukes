@@ -1227,7 +1227,7 @@ function Contact() {
             {[
               { l: "Dukes Realty ", v: <>406, 4th floor, R.P. Business Park, Shaikpet, Hyderabad,<br /> 500104, Telangana, India.</> },
               { l: "Email", v: "info@dukesindia.com", href: "mailto:info@dukesindia.com" },
-              { l: "Telephone", v: "7893846784", href: "tel:+917893846784" },
+              { l: "Telephone", v: "+917893846784", href: "tel:+917893846784" },
             ].map((c, i) => (
               <motion.div
                 key={c.l}
