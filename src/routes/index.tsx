@@ -42,7 +42,7 @@ import dukesVistasImg from "@/assets/dukes-vistas.jpg";
 import dukesCountyImg from "@/assets/dukes-county.jpg";
 import dukesRoyalVistasImg from "@/assets/dukes-royal-vistas.jpg";
 import stellarImg from "@/assets/stellar.jpg";
-import westernCountyImg from "@/assets/western-county.jpg";
+import westernCountyImg from "@/assets/western-county.png";
 import ashishAgarwalImg from "@/assets/ashish-agarwal.jpeg";
 import samarthAgarwalImg from "@/assets/samarth-agarwal.png";
 import botanicaImg from "@/assets/Botanica.png";
